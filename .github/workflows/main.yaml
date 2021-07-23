@@ -1,4 +1,4 @@
-name: Build server and web
+name: Build server
 
 on: [push]
 
@@ -11,12 +11,3 @@ jobs:
               with:
                   node-version: 12
             - run: cd nissan && yarn install && yarn build
-
-    web:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v1
-            - uses: actions/setup-node@v1
-              with:
-                  node-version: 12
-            - run: cd dodge && yarn install && yarn build
