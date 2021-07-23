@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "test": "jest --watchAll",
-        "build": "tsc --build",
+        "build": "tsc --build --clean",
         "watch": "tsc -w",
         "dev": "nodemon dist/index.js"
     },
