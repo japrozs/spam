@@ -2,6 +2,9 @@ import { withUrqlClient } from "next-urql";
 import { useRouter } from "next/router";
 import { useMeQuery } from "../generated/graphql";
 import { createUrqlClient } from "../utils/createUrqlClient";
+import { isMobile } from "react-device-detect";
+import { Landing as DesktopLanding } from "../modules/Desktop/Landing";
+import { Landing as MobileLanding } from "../modules/Mobile/Landing";
 
 function Index() {
     const [{ data, fetching }] = useMeQuery();
@@ -9,12 +12,11 @@ function Index() {
     if (data?.me) {
         router.push("/main");
     }
-    return (
-        <div>
-            <h1>index page</h1>
-            <code>{JSON.stringify(data)}</code>
-        </div>
-    );
+    if (isMobile) {
+        return <MobileLanding />;
+    } else {
+        return <DesktopLanding />;
+    }
 }
 
 export default withUrqlClient(createUrqlClient)(Index);

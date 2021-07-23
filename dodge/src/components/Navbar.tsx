@@ -14,12 +14,14 @@ import {
     MenuCommand,
     MenuDivider,
 } from "@chakra-ui/react";
+import { useLogoutMutation, useMeQuery } from "../generated/graphql";
 import Image from "next/image";
 import logo from "../public/logo.png";
 
 interface NavbarProps {}
 
 export const Navbar: React.FC<NavbarProps> = ({}) => {
+    const [{ fetching: logoutFetching }, logout] = useLogoutMutation();
     return (
         <Flex className="nav" p={2} mb={5} alignItems="center">
             <Box ml={8} width="50px" height="50px">
@@ -56,7 +58,14 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
                         <MenuList>
                             <MenuItem>Settings</MenuItem>
                             <MenuDivider />
-                            <MenuItem color={"red.500"}>Log out</MenuItem>
+                            <MenuItem
+                                color={"red.500"}
+                                onClick={() => {
+                                    logout();
+                                }}
+                            >
+                                Log out
+                            </MenuItem>
                         </MenuList>
                     </Menu>
                 </Box>
