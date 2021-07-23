@@ -10,7 +10,7 @@ jobs:
             - uses: actions/setup-node@v1
               with:
                   node-version: 12
-            - run: cd nissan && NODE_ENV=production yarn install && NODE_ENV=production yarn build
+            - run: cd nissan && yarn install && yarn build
 
     web:
         runs-on: ubuntu-latest
@@ -19,4 +19,4 @@ jobs:
             - uses: actions/setup-node@v1
               with:
                   node-version: 12
-            - run: cd dodge && yarn install && yarn build
+            - run: cd dodge && NODE_ENV=production yarn install && NODE_ENV=production yarn build
