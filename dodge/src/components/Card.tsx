@@ -37,28 +37,37 @@ export const Card: React.FC<CardProps> = ({
     return (
         <Box
             borderRadius="0.2rem"
+            border="1px solid #ADACAC"
             width="700px"
             mr={5}
             mb={5}
             className="card"
+            cursor="pointer"
             p={5}
-            backgroundColor="gray.100"
+            backgroundColor="#EDEFF1"
+            _hover={{
+                backgroundColor: "#F8F9FB",
+            }}
         >
             <Flex alignItems="center">
                 <Flex alignItems="center">
                     {subject.length == 0 ? (
-                        <Text color="gray" fontWeight="bold" fontSize="3xl">
+                        <Text
+                            color="gray"
+                            fontWeight="semibold"
+                            fontSize="35px"
+                        >
                             No subject
                         </Text>
                     ) : (
-                        <Text fontWeight="bold" fontSize="3xl">
+                        <Text fontWeight="semibold" fontSize="35px">
                             {truncate(subject, 30)}
                         </Text>
                     )}
-                    <Text color="gray.600" px={3} fontSize="3xl">
+                    <Text color="#909090" px={3} fontSize="3xl">
                         •
                     </Text>
-                    <Text color="gray.500" fontSize="large">
+                    <Text color="#909090" fontWeight="semibold" fontSize="20px">
                         {dayjs(msToDate(createdAt)).fromNow()}
                     </Text>
                 </Flex>
@@ -68,6 +77,7 @@ export const Card: React.FC<CardProps> = ({
                             variant="solid"
                             border="1px solid lightgray"
                             as={Button}
+                            rightIcon={<ChevronDownIcon />}
                         >
                             <SettingsIcon fontSize="large" />
                         </MenuButton>
@@ -82,12 +92,18 @@ export const Card: React.FC<CardProps> = ({
                     No body
                 </Text>
             ) : (
-                <Text fontSize="xl" color="gray.500">
-                    {truncate(body, 150)}
+                <Text fontSize="xl" color="#353434">
+                    {truncate(body.replace(/(<([^>]+)>)/gi, ""), 150)}
                 </Text>
             )}
 
-            <Text>{truncate(generateReceiverList(receivers), 150)}</Text>
+            <Text
+                fontWeight="semibold"
+                color="#909090"
+                dangerouslySetInnerHTML={{
+                    __html: generateReceiverList(receivers),
+                }}
+            ></Text>
         </Box>
     );
 };

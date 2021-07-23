@@ -1,6 +1,6 @@
 import { Box, Button, Flex, Heading } from "@chakra-ui/react";
 import React from "react";
-import { AddIcon } from "@chakra-ui/icons";
+import { ChevronDownIcon, AddIcon } from "@chakra-ui/icons";
 import NextLink from "next/link";
 import {
     Menu,
@@ -14,16 +14,18 @@ import {
     MenuCommand,
     MenuDivider,
 } from "@chakra-ui/react";
+import Image from "next/image";
+import logo from "../public/logo.png";
 
 interface NavbarProps {}
 
 export const Navbar: React.FC<NavbarProps> = ({}) => {
     return (
         <Flex className="nav" p={2} mb={5} alignItems="center">
-            <Heading pl={8} fontSize="3xl">
-                Spam
-            </Heading>
-            <Flex ml={"auto"} mr={1} alignItems="center">
+            <Box ml={8} width="50px" height="50px">
+                <Image src={logo} alt="Logo" />
+            </Box>
+            <Flex ml={"auto"} mr={"20px"} alignItems="center">
                 <Box mr={5}>
                     <Menu>
                         {/* <AddIcon /> */}
@@ -47,6 +49,7 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
                             variant="solid"
                             border="1px solid lightgray"
                             as={Button}
+                            rightIcon={<ChevronDownIcon />}
                         >
                             ben@ben.com
                         </MenuButton>
