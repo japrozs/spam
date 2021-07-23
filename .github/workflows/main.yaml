@@ -10,5 +10,4 @@ jobs:
             - uses: actions/setup-node@v1
               with:
                   node-version: 12
-            - run: cd nissan && yarn install
-            - run: yarn test
+            - run: cd nissan && yarn install && yarn build
