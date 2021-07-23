@@ -6,10 +6,10 @@ jobs:
     server:
         runs-on: ubuntu-latest
         steps:
-            - uses: action/checkout@v2
+            - uses: actions/checkout@v2
             - run: cd nissan && yarn build
     web:
         runs-on: ubuntu-latest
         steps:
-            - uses: action/checkout@v2
+            - uses: actions/checkout@v2
             - run: cd dodge yarn build
