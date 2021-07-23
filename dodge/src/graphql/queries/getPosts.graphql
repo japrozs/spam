@@ -1,0 +1,11 @@
+query getPosts {
+    getPosts {
+        id
+        title
+        body
+        creatorId
+        receivers
+        createdAt
+        updatedAt
+    }
+}

@@ -1,0 +1,36 @@
+{
+    "name": "@spam/nissan",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "jest --watchAll",
+        "watch": "tsc -w",
+        "dev": "nodemon dist/index.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/nodemailer": "^6.4.4",
+        "@types/uuid": "^8.3.1",
+        "apollo-server-express": "^2.25.0",
+        "argon2": "^0.28.2",
+        "cors": "^2.8.5",
+        "express": "^4.17.1",
+        "nodemon": "^2.0.12",
+        "pg": "^8.6.0",
+        "type-graphql": "^1.1.1",
+        "typeorm": "^0.2.34"
+    },
+    "dependencies": {
+        "@types/connect-redis": "^0.0.17",
+        "@types/express-session": "^1.17.4",
+        "@types/ioredis": "^4.26.6",
+        "connect-redis": "^6.0.0",
+        "express-session": "^1.17.2",
+        "ioredis": "^4.27.6",
+        "nodemailer": "^6.6.3",
+        "uuid": "^8.3.2"
+    }
+}

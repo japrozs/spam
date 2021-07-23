@@ -1,0 +1,12 @@
+{
+  "name": "root",
+  "private": true,
+  "devDependencies": {
+    "@types/morgan": "^1.9.3",
+    "lerna": "^4.0.0"
+  },
+  "dependencies": {
+    "apollo-server-core": "^3.0.2",
+    "morgan": "^1.10.0"
+  }
+}
