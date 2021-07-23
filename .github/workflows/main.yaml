@@ -7,4 +7,5 @@ jobs:
     update:
         runs-on: ubuntu-latest
         steps:
-            - run: ls
+            - run: cd nissan && yarn build
+            - run: cd dodge && yarn build
