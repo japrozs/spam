@@ -1,15 +1,15 @@
-name: CI/CD
+# name: CI/CD
 
-on: [push]
+# on: [push]
 
-jobs:
-    server:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v2
-            - run: cd nissan && yarn build
-    web:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v2
-            - run: cd dodge && yarn build
+# jobs:
+#     server:
+#         runs-on: ubuntu-latest
+#         steps:
+#             - uses: actions/checkout@v2
+#             - run: cd nissan && yarn build
+#     web:
+#         runs-on: ubuntu-latest
+#         steps:
+#             - uses: actions/checkout@v2
+#             - run: cd dodge && yarn build
