@@ -40,6 +40,7 @@ export class PostResolver {
     }
 
     @Mutation(() => Post)
+    @UseMiddleware(isAuth)
     async createPost(
         @Arg("input") input: PostInput,
         @Ctx() { req }: MyContext

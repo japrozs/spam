@@ -8,6 +8,7 @@ import {
     UpdateDateColumn,
     OneToMany,
 } from "typeorm";
+import { Group } from "./Group";
 import { Post } from "./Post";
 
 @ObjectType()
@@ -20,6 +21,10 @@ export class User extends BaseEntity {
     @Field(() => [Post])
     @OneToMany(() => Post, (post) => post.creator)
     posts: Post[];
+
+    @Field(() => [Group])
+    @OneToMany(() => Group, (grp) => grp.creator)
+    groups: Group[];
 
     @Field()
     @Column()

@@ -9,65 +9,50 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.User = void 0;
+exports.Group = void 0;
 const type_graphql_1 = require("type-graphql");
 const typeorm_1 = require("typeorm");
-const Group_1 = require("./Group");
-const Post_1 = require("./Post");
-let User = class User extends typeorm_1.BaseEntity {
+const User_1 = require("./User");
+let Group = class Group extends typeorm_1.BaseEntity {
 };
 __decorate([
     type_graphql_1.Field(),
     typeorm_1.PrimaryGeneratedColumn(),
     __metadata("design:type", Number)
-], User.prototype, "id", void 0);
-__decorate([
-    type_graphql_1.Field(() => [Post_1.Post]),
-    typeorm_1.OneToMany(() => Post_1.Post, (post) => post.creator),
-    __metadata("design:type", Array)
-], User.prototype, "posts", void 0);
-__decorate([
-    type_graphql_1.Field(() => [Group_1.Group]),
-    typeorm_1.OneToMany(() => Group_1.Group, (grp) => grp.creator),
-    __metadata("design:type", Array)
-], User.prototype, "groups", void 0);
+], Group.prototype, "id", void 0);
 __decorate([
     type_graphql_1.Field(),
     typeorm_1.Column(),
     __metadata("design:type", String)
-], User.prototype, "name", void 0);
+], Group.prototype, "name", void 0);
+__decorate([
+    type_graphql_1.Field(() => [String]),
+    typeorm_1.Column("simple-array", { nullable: true }),
+    __metadata("design:type", Array)
+], Group.prototype, "emails", void 0);
 __decorate([
     type_graphql_1.Field(),
-    typeorm_1.Column({ default: "light" }),
-    __metadata("design:type", String)
-], User.prototype, "theme", void 0);
-__decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ default: false }),
-    __metadata("design:type", Boolean)
-], User.prototype, "confirmed", void 0);
-__decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ unique: true }),
-    __metadata("design:type", String)
-], User.prototype, "email", void 0);
-__decorate([
     typeorm_1.Column(),
-    __metadata("design:type", String)
-], User.prototype, "password", void 0);
+    __metadata("design:type", Number)
+], Group.prototype, "creatorId", void 0);
+__decorate([
+    type_graphql_1.Field(() => User_1.User),
+    typeorm_1.ManyToOne(() => User_1.User, (user) => user.groups),
+    __metadata("design:type", User_1.User)
+], Group.prototype, "creator", void 0);
 __decorate([
     type_graphql_1.Field(() => String),
     typeorm_1.CreateDateColumn(),
     __metadata("design:type", Date)
-], User.prototype, "createdAt", void 0);
+], Group.prototype, "createdAt", void 0);
 __decorate([
     type_graphql_1.Field(() => String),
     typeorm_1.UpdateDateColumn(),
     __metadata("design:type", Date)
-], User.prototype, "updatedAt", void 0);
-User = __decorate([
+], Group.prototype, "updatedAt", void 0);
+Group = __decorate([
     type_graphql_1.ObjectType(),
     typeorm_1.Entity()
-], User);
-exports.User = User;
-//# sourceMappingURL=User.js.map
+], Group);
+exports.Group = Group;
+//# sourceMappingURL=Group.js.map

@@ -74,6 +74,7 @@ __decorate([
 ], PostResolver.prototype, "getPosts", null);
 __decorate([
     type_graphql_1.Mutation(() => Post_1.Post),
+    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
     __param(0, type_graphql_1.Arg("input")),
     __param(1, type_graphql_1.Ctx()),
     __metadata("design:type", Function),

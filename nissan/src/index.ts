@@ -13,6 +13,8 @@ import { buildSchema } from "type-graphql";
 import { User } from "./entities/User";
 import morgan from "morgan";
 import { Post } from "./entities/Post";
+import { Group } from "./entities/Group";
+import { GroupResolver } from "./resolvers/group";
 
 const main = async () => {
     const conn = await createConnection({
@@ -20,7 +22,7 @@ const main = async () => {
         database: "spam",
         username: "postgres",
         password: "postgres",
-        entities: [User, Post],
+        entities: [User, Post, Group],
         migrations: [path.join(__dirname, "./migrations/*")],
         synchronize: true,
         logging: true,
@@ -63,7 +65,7 @@ const main = async () => {
 
     const apolloServer = new ApolloServer({
         schema: await buildSchema({
-            resolvers: [UserResolver, PostResolver],
+            resolvers: [UserResolver, PostResolver, GroupResolver],
             validate: false,
         }),
         context: ({ req, res }) => ({ req, res, redis }),

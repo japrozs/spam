@@ -5,20 +5,37 @@ import { withUrqlClient } from "next-urql";
 import { useRouter } from "next/router";
 import React from "react";
 import { EditorField } from "../components/EditorField";
-import { useCreatePostMutation } from "../generated/graphql";
+import {
+    Group,
+    useCreatePostMutation,
+    useGetGroupsQuery,
+} from "../generated/graphql";
 import { createUrqlClient } from "../utils/createUrqlClient";
 import { useIsAuth } from "../hooks/useIsAuth";
 import { Wrapper } from "../components/Wrapper";
 import { TextField } from "../components/TextField";
-import { ChevronLeftIcon } from "@chakra-ui/icons";
+import { ChevronLeftIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import { Editor } from "@tinymce/tinymce-react";
 import { extractEmails } from "../utils/extractEmails";
 import NextLink from "next/link";
+import {
+    Menu,
+    MenuButton,
+    MenuList,
+    MenuItem,
+    MenuItemOption,
+    MenuGroup,
+    MenuOptionGroup,
+    MenuIcon,
+    MenuCommand,
+    MenuDivider,
+} from "@chakra-ui/react";
 
 const CreatePost: React.FC<{}> = ({}) => {
     const router = useRouter();
     useIsAuth();
     const [, createPost] = useCreatePostMutation();
+    const [{ data, fetching }] = useGetGroupsQuery();
     const [body, setBody] = useState("");
 
     const handleEditorChange = (e) => {
@@ -104,11 +121,28 @@ const CreatePost: React.FC<{}> = ({}) => {
                             />
                         </Box>
                         <Box mt={4}>
-                            <EditorField
-                                name="receivers"
-                                placeholder="johndoe@gmail.com, janedo@gmail.com, abc@gmail.com"
-                                label="Receivers (seperated by commas)"
-                            />
+                            <Text fontSize="xl" mb={2} fontWeight="semibold">
+                                Recipients
+                            </Text>
+                            <Menu>
+                                {/* <AddIcon /> */}
+                                <MenuButton
+                                    backgroundColor="white"
+                                    as={Button}
+                                    variant="solid"
+                                    border="1px solid lightgray"
+                                >
+                                    New Group {<ChevronDownIcon />}
+                                </MenuButton>
+                                <MenuList>
+                                    {data &&
+                                        data.getGroups.map((grp) => (
+                                            <MenuItem key={grp.id}>
+                                                {grp.name}
+                                            </MenuItem>
+                                        ))}
+                                </MenuList>
+                            </Menu>
                         </Box>
                         <Button
                             mt={4}

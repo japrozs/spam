@@ -1,0 +1,10 @@
+query getGroups {
+    getGroups {
+        id
+        name
+        emails
+        creatorId
+        createdAt
+        updatedAt
+    }
+}

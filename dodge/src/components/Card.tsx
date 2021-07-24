@@ -38,15 +38,15 @@ export const Card: React.FC<CardProps> = ({
         <Box
             borderRadius="0.2rem"
             border="1px solid #ADACAC"
-            width="700px"
+            width="47vw"
             mr={5}
             mb={5}
             className="card"
             cursor="pointer"
             p={5}
-            backgroundColor="#EDEFF1"
+            backgroundColor="rgb(248, 248, 248)"
             _hover={{
-                backgroundColor: "#F8F9FB",
+                backgroundColor: "#fff",
             }}
         >
             <Flex alignItems="center">
@@ -54,14 +54,19 @@ export const Card: React.FC<CardProps> = ({
                     {subject.length == 0 ? (
                         <Text
                             color="gray"
+                            fontFamily="Lora"
                             fontWeight="semibold"
                             fontSize="35px"
                         >
                             No subject
                         </Text>
                     ) : (
-                        <Text fontWeight="semibold" fontSize="35px">
-                            {truncate(subject, 30)}
+                        <Text
+                            fontFamily="Lora"
+                            fontWeight="semibold"
+                            fontSize="35px"
+                        >
+                            {truncate(subject, 8)}
                         </Text>
                     )}
                     <Text color="#909090" px={3} fontSize="3xl">
@@ -88,18 +93,18 @@ export const Card: React.FC<CardProps> = ({
                 </Box>
             </Flex>
             {body.length == 0 ? (
-                <Text color="gray.500" fontSize="xl">
+                <Text fontFamily="Lora" color="gray.500" fontSize="xl">
                     No body
                 </Text>
             ) : (
-                <Text fontSize="xl" color="#353434">
+                <Text fontFamily="Lora" fontSize="xl" color="#353434">
                     {truncate(body.replace(/(<([^>]+)>)/gi, ""), 150)}
                 </Text>
             )}
 
             <Text
                 fontWeight="semibold"
-                color="#909090"
+                color="gray.500"
                 dangerouslySetInnerHTML={{
                     __html: generateReceiverList(receivers),
                 }}

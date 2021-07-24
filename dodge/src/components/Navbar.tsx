@@ -22,6 +22,7 @@ interface NavbarProps {}
 
 export const Navbar: React.FC<NavbarProps> = ({}) => {
     const [{ fetching: logoutFetching }, logout] = useLogoutMutation();
+    const [{ data, fetching }] = useMeQuery();
     return (
         <Flex className="nav" p={2} mb={5} alignItems="center">
             <Box ml={8} width="50px" height="50px">
@@ -32,6 +33,7 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
                     <Menu>
                         {/* <AddIcon /> */}
                         <MenuButton
+                            backgroundColor="white"
                             as={Button}
                             variant="solid"
                             border="1px solid lightgray"
@@ -42,21 +44,27 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
                             <NextLink href="/create-post">
                                 <MenuItem>New Post</MenuItem>
                             </NextLink>
+                            <NextLink href="/create-group">
+                                <MenuItem>New Group</MenuItem>
+                            </NextLink>
                         </MenuList>
                     </Menu>
                 </Box>
                 <Box>
                     <Menu>
                         <MenuButton
+                            backgroundColor="white"
                             variant="solid"
                             border="1px solid lightgray"
                             as={Button}
                             rightIcon={<ChevronDownIcon />}
                         >
-                            ben@ben.com
+                            {data?.me.email}
                         </MenuButton>
                         <MenuList>
-                            <MenuItem>Settings</MenuItem>
+                            <NextLink href="/pref">
+                                <MenuItem>Settings</MenuItem>
+                            </NextLink>
                             <MenuDivider />
                             <MenuItem
                                 color={"red.500"}

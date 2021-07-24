@@ -20,6 +20,22 @@ export type FieldError = {
   message: Scalars['String'];
 };
 
+export type Group = {
+  __typename?: 'Group';
+  id: Scalars['Float'];
+  name: Scalars['String'];
+  emails: Array<Scalars['String']>;
+  creatorId: Scalars['Float'];
+  creator: User;
+  createdAt: Scalars['String'];
+  updatedAt: Scalars['String'];
+};
+
+export type GroupInput = {
+  name: Scalars['String'];
+  emails: Array<Scalars['String']>;
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   changePassword: UserResponse;
@@ -28,6 +44,7 @@ export type Mutation = {
   login: UserResponse;
   logout?: Maybe<Scalars['Boolean']>;
   createPost: Post;
+  createGroup: Group;
 };
 
 
@@ -57,6 +74,11 @@ export type MutationCreatePostArgs = {
   input: PostInput;
 };
 
+
+export type MutationCreateGroupArgs = {
+  input: GroupInput;
+};
+
 export type Post = {
   __typename?: 'Post';
   id: Scalars['Float'];
@@ -79,12 +101,14 @@ export type Query = {
   __typename?: 'Query';
   me?: Maybe<User>;
   getPosts: Array<Post>;
+  getGroups: Array<Group>;
 };
 
 export type User = {
   __typename?: 'User';
   id: Scalars['Float'];
   posts: Array<Post>;
+  groups: Array<Group>;
   name: Scalars['String'];
   theme: Scalars['String'];
   confirmed: Scalars['Boolean'];
@@ -137,6 +161,19 @@ export type ChangePasswordMutation = (
   & { changePassword: (
     { __typename?: 'UserResponse' }
     & RegularUserResponseFragment
+  ) }
+);
+
+export type CreateGroupMutationVariables = Exact<{
+  input: GroupInput;
+}>;
+
+
+export type CreateGroupMutation = (
+  { __typename?: 'Mutation' }
+  & { createGroup: (
+    { __typename?: 'Group' }
+    & Pick<Group, 'id' | 'name' | 'emails' | 'creatorId' | 'createdAt' | 'updatedAt'>
   ) }
 );
 
@@ -198,6 +235,17 @@ export type RegisterMutation = (
   ) }
 );
 
+export type GetGroupsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetGroupsQuery = (
+  { __typename?: 'Query' }
+  & { getGroups: Array<(
+    { __typename?: 'Group' }
+    & Pick<Group, 'id' | 'name' | 'emails' | 'creatorId' | 'createdAt' | 'updatedAt'>
+  )> }
+);
+
 export type GetPostsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -255,6 +303,22 @@ export const ChangePasswordDocument = gql`
 export function useChangePasswordMutation() {
   return Urql.useMutation<ChangePasswordMutation, ChangePasswordMutationVariables>(ChangePasswordDocument);
 };
+export const CreateGroupDocument = gql`
+    mutation CreateGroup($input: GroupInput!) {
+  createGroup(input: $input) {
+    id
+    name
+    emails
+    creatorId
+    createdAt
+    updatedAt
+  }
+}
+    `;
+
+export function useCreateGroupMutation() {
+  return Urql.useMutation<CreateGroupMutation, CreateGroupMutationVariables>(CreateGroupDocument);
+};
 export const CreatePostDocument = gql`
     mutation CreatePost($input: PostInput!) {
   createPost(input: $input) {
@@ -311,6 +375,22 @@ export const RegisterDocument = gql`
 
 export function useRegisterMutation() {
   return Urql.useMutation<RegisterMutation, RegisterMutationVariables>(RegisterDocument);
+};
+export const GetGroupsDocument = gql`
+    query getGroups {
+  getGroups {
+    id
+    name
+    emails
+    creatorId
+    createdAt
+    updatedAt
+  }
+}
+    `;
+
+export function useGetGroupsQuery(options: Omit<Urql.UseQueryArgs<GetGroupsQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<GetGroupsQuery>({ query: GetGroupsDocument, ...options });
 };
 export const GetPostsDocument = gql`
     query getPosts {
