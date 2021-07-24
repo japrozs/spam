@@ -1,4 +1,4 @@
-name: Build server
+name: Build server and web packages
 
 on: [push]
 
