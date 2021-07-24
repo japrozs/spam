@@ -47,6 +47,11 @@ const Main: React.FC<mainProps> = ({}) => {
                                 color="gray.600"
                             />
                         )}
+                        {data && data.getPosts.length == 0 && (
+                            <Text fontWeight="medium">
+                                You dont have any posts
+                            </Text>
+                        )}
                     </Box>
                     <Box ml={"auto"} mr={"30px"}>
                         <RecipientList />

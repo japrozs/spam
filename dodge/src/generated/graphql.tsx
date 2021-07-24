@@ -45,6 +45,7 @@ export type Mutation = {
   logout?: Maybe<Scalars['Boolean']>;
   createPost: Post;
   createGroup: Group;
+  deleteGroup: Scalars['Boolean'];
 };
 
 
@@ -79,6 +80,11 @@ export type MutationCreateGroupArgs = {
   input: GroupInput;
 };
 
+
+export type MutationDeleteGroupArgs = {
+  id: Scalars['Int'];
+};
+
 export type Post = {
   __typename?: 'Post';
   id: Scalars['Float'];
@@ -102,6 +108,12 @@ export type Query = {
   me?: Maybe<User>;
   getPosts: Array<Post>;
   getGroups: Array<Group>;
+  getGroup: Group;
+};
+
+
+export type QueryGetGroupArgs = {
+  id: Scalars['Int'];
 };
 
 export type User = {
@@ -190,6 +202,16 @@ export type CreatePostMutation = (
   ) }
 );
 
+export type DeleteGroupMutationVariables = Exact<{
+  id: Scalars['Int'];
+}>;
+
+
+export type DeleteGroupMutation = (
+  { __typename?: 'Mutation' }
+  & Pick<Mutation, 'deleteGroup'>
+);
+
 export type ForgotPasswordMutationVariables = Exact<{
   email: Scalars['String'];
 }>;
@@ -232,6 +254,19 @@ export type RegisterMutation = (
   & { register: (
     { __typename?: 'UserResponse' }
     & RegularUserResponseFragment
+  ) }
+);
+
+export type GetGroupQueryVariables = Exact<{
+  id: Scalars['Int'];
+}>;
+
+
+export type GetGroupQuery = (
+  { __typename?: 'Query' }
+  & { getGroup: (
+    { __typename?: 'Group' }
+    & Pick<Group, 'id' | 'name' | 'emails' | 'creatorId' | 'createdAt' | 'updatedAt'>
   ) }
 );
 
@@ -336,6 +371,15 @@ export const CreatePostDocument = gql`
 export function useCreatePostMutation() {
   return Urql.useMutation<CreatePostMutation, CreatePostMutationVariables>(CreatePostDocument);
 };
+export const DeleteGroupDocument = gql`
+    mutation DeleteGroup($id: Int!) {
+  deleteGroup(id: $id)
+}
+    `;
+
+export function useDeleteGroupMutation() {
+  return Urql.useMutation<DeleteGroupMutation, DeleteGroupMutationVariables>(DeleteGroupDocument);
+};
 export const ForgotPasswordDocument = gql`
     mutation ForgotPassword($email: String!) {
   forgotPassword(email: $email)
@@ -375,6 +419,22 @@ export const RegisterDocument = gql`
 
 export function useRegisterMutation() {
   return Urql.useMutation<RegisterMutation, RegisterMutationVariables>(RegisterDocument);
+};
+export const GetGroupDocument = gql`
+    query getGroup($id: Int!) {
+  getGroup(id: $id) {
+    id
+    name
+    emails
+    creatorId
+    createdAt
+    updatedAt
+  }
+}
+    `;
+
+export function useGetGroupQuery(options: Omit<Urql.UseQueryArgs<GetGroupQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<GetGroupQuery>({ query: GetGroupDocument, ...options });
 };
 export const GetGroupsDocument = gql`
     query getGroups {

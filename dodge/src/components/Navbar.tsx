@@ -1,28 +1,29 @@
-import { Box, Button, Flex, Heading } from "@chakra-ui/react";
-import React from "react";
-import { ChevronDownIcon, AddIcon } from "@chakra-ui/icons";
-import NextLink from "next/link";
+import { AlertDescription } from "@chakra-ui/core";
+import { AddIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import {
+    Box,
+    Button,
+    Flex,
     Menu,
     MenuButton,
-    MenuList,
-    MenuItem,
-    MenuItemOption,
-    MenuGroup,
-    MenuOptionGroup,
-    MenuIcon,
-    MenuCommand,
     MenuDivider,
+    MenuItem,
+    MenuList,
 } from "@chakra-ui/react";
-import { useLogoutMutation, useMeQuery } from "../generated/graphql";
 import Image from "next/image";
+import NextLink from "next/link";
+import React from "react";
+import { useLogoutMutation, useMeQuery } from "../generated/graphql";
 import logo from "../public/logo.png";
+import { useRouter } from "next/router";
 
 interface NavbarProps {}
 
 export const Navbar: React.FC<NavbarProps> = ({}) => {
     const [{ fetching: logoutFetching }, logout] = useLogoutMutation();
     const [{ data, fetching }] = useMeQuery();
+    const router = useRouter();
+
     return (
         <Flex className="nav" p={2} mb={5} alignItems="center">
             <Box ml={8} width="50px" height="50px">
@@ -42,10 +43,14 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
                         </MenuButton>
                         <MenuList>
                             <NextLink href="/create-post">
-                                <MenuItem>New Post</MenuItem>
+                                <MenuItem fontWeight="medium">
+                                    New Post
+                                </MenuItem>
                             </NextLink>
                             <NextLink href="/create-group">
-                                <MenuItem>New Group</MenuItem>
+                                <MenuItem fontWeight="medium">
+                                    New Group
+                                </MenuItem>
                             </NextLink>
                         </MenuList>
                     </Menu>
@@ -63,13 +68,17 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
                         </MenuButton>
                         <MenuList>
                             <NextLink href="/pref">
-                                <MenuItem>Settings</MenuItem>
+                                <MenuItem fontWeight="medium">
+                                    Settings
+                                </MenuItem>
                             </NextLink>
                             <MenuDivider />
                             <MenuItem
+                                fontWeight="medium"
                                 color={"red.500"}
                                 onClick={() => {
                                     logout();
+                                    router.push("/");
                                 }}
                             >
                                 Log out

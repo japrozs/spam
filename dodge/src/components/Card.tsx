@@ -66,7 +66,7 @@ export const Card: React.FC<CardProps> = ({
                             fontWeight="semibold"
                             fontSize="35px"
                         >
-                            {truncate(subject, 8)}
+                            {truncate(subject, 13)}
                         </Text>
                     )}
                     <Text color="#909090" px={3} fontSize="3xl">

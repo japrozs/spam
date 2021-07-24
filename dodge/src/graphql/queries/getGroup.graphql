@@ -1,0 +1,10 @@
+query getGroup($id: Int!) {
+    getGroup(id: $id) {
+        id
+        name
+        emails
+        creatorId
+        createdAt
+        updatedAt
+    }
+}

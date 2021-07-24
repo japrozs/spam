@@ -31,7 +31,7 @@ const CreatePost: React.FC<{}> = ({}) => {
 
     return (
         <Wrapper variant="regular">
-            <NextLink href="/">
+            <NextLink href="/main">
                 <Text
                     cursor="pointer"
                     color="gray.700"

@@ -44,6 +44,9 @@ export const RecipientList: React.FC<RecipientListProps> = ({}) => {
                         {a.email}
                     </Text>
                 ))}
+            {data && genRecipientList(data.getPosts).length == 0 && (
+                <Text fontWeight="medium">You havent sent any newsletters</Text>
+            )}
         </Box>
     );
 };
