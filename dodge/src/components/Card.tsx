@@ -3,6 +3,7 @@ import React from "react";
 import { generateReceiverList } from "../utils/generateReceiverList";
 import { truncate } from "../utils/truncate";
 import { ChevronDownIcon, SettingsIcon } from "@chakra-ui/icons";
+import { useRouter } from "next/router";
 import {
     Menu,
     MenuButton,
@@ -18,6 +19,7 @@ import {
 import relativeTime from "dayjs/plugin/relativeTime";
 import dayjs from "dayjs";
 import { msToDate } from "../utils/msToDate";
+import NextLink from "next/link";
 
 dayjs.extend(relativeTime);
 
@@ -26,6 +28,7 @@ interface CardProps {
     body: string;
     receivers: string[];
     createdAt: string;
+    id: number;
 }
 
 export const Card: React.FC<CardProps> = ({
@@ -33,7 +36,9 @@ export const Card: React.FC<CardProps> = ({
     body,
     receivers,
     createdAt,
+    id,
 }) => {
+    const router = useRouter();
     return (
         <Box
             borderRadius="0.2rem"
@@ -47,6 +52,9 @@ export const Card: React.FC<CardProps> = ({
             backgroundColor="rgb(248, 248, 248)"
             _hover={{
                 backgroundColor: "#fff",
+            }}
+            onClick={() => {
+                router.push(`/p/${id}`);
             }}
         >
             <Flex alignItems="center">

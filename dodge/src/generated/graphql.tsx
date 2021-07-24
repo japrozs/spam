@@ -107,8 +107,14 @@ export type Query = {
   __typename?: 'Query';
   me?: Maybe<User>;
   getPosts: Array<Post>;
+  getPost: Post;
   getGroups: Array<Group>;
   getGroup: Group;
+};
+
+
+export type QueryGetPostArgs = {
+  id: Scalars['Int'];
 };
 
 
@@ -281,6 +287,19 @@ export type GetGroupsQuery = (
   )> }
 );
 
+export type GetPostQueryVariables = Exact<{
+  id: Scalars['Int'];
+}>;
+
+
+export type GetPostQuery = (
+  { __typename?: 'Query' }
+  & { getPost: (
+    { __typename?: 'Post' }
+    & Pick<Post, 'id' | 'title' | 'body' | 'creatorId' | 'receivers' | 'createdAt' | 'updatedAt'>
+  ) }
+);
+
 export type GetPostsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -451,6 +470,23 @@ export const GetGroupsDocument = gql`
 
 export function useGetGroupsQuery(options: Omit<Urql.UseQueryArgs<GetGroupsQueryVariables>, 'query'> = {}) {
   return Urql.useQuery<GetGroupsQuery>({ query: GetGroupsDocument, ...options });
+};
+export const GetPostDocument = gql`
+    query getPost($id: Int!) {
+  getPost(id: $id) {
+    id
+    title
+    body
+    creatorId
+    receivers
+    createdAt
+    updatedAt
+  }
+}
+    `;
+
+export function useGetPostQuery(options: Omit<Urql.UseQueryArgs<GetPostQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<GetPostQuery>({ query: GetPostDocument, ...options });
 };
 export const GetPostsDocument = gql`
     query getPosts {

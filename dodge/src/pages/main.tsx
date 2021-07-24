@@ -9,6 +9,7 @@ import { useIsAuth } from "../hooks/useIsAuth";
 import { createUrqlClient } from "../utils/createUrqlClient";
 import { RecipientList } from "../components/RecipientList";
 import { Spinner } from "@chakra-ui/spinner";
+import NextLink from "next/link";
 
 interface mainProps {}
 
@@ -37,6 +38,7 @@ const Main: React.FC<mainProps> = ({}) => {
                                     body={post.body}
                                     receivers={post.receivers}
                                     createdAt={post.createdAt}
+                                    id={post.id}
                                 />
                             ))}
                         {fetching && (
