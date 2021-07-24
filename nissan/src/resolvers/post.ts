@@ -10,6 +10,7 @@ import {
     Mutation,
     Arg,
     InputType,
+    Int,
 } from "type-graphql";
 import { sendLetter } from "../utils/sendLetter";
 
@@ -49,5 +50,10 @@ export class PostResolver {
             sendLetter(rec, input.body, input.title);
         });
         return Post.create({ ...input, creatorId: req.session.userId }).save();
+    }
+
+    @Query(() => Post)
+    getPost(@Arg("id", () => Int) id: number, @Ctx() { req }: MyContext) {
+        return Post.findOne({ where: { id, creatorId: req.session.userId } });
     }
 }

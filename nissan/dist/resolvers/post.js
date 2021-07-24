@@ -63,6 +63,9 @@ let PostResolver = class PostResolver {
             return Post_1.Post.create(Object.assign(Object.assign({}, input), { creatorId: req.session.userId })).save();
         });
     }
+    getPost(id, { req }) {
+        return Post_1.Post.findOne({ where: { id, creatorId: req.session.userId } });
+    }
 };
 __decorate([
     type_graphql_1.Query(() => [Post_1.Post]),
@@ -81,6 +84,13 @@ __decorate([
     __metadata("design:paramtypes", [PostInput, Object]),
     __metadata("design:returntype", Promise)
 ], PostResolver.prototype, "createPost", null);
+__decorate([
+    type_graphql_1.Query(() => Post_1.Post),
+    __param(0, type_graphql_1.Arg("id", () => type_graphql_1.Int)), __param(1, type_graphql_1.Ctx()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number, Object]),
+    __metadata("design:returntype", void 0)
+], PostResolver.prototype, "getPost", null);
 PostResolver = __decorate([
     type_graphql_1.Resolver()
 ], PostResolver);
