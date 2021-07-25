@@ -6,6 +6,7 @@ import { InputField } from "../components/InputField";
 import { Wrapper } from "../components/Wrapper";
 import { createUrqlClient } from "../utils/createUrqlClient";
 import { useForgotPasswordMutation } from "../generated/graphql";
+import Head from "next/head";
 
 interface forgotPasswordProps {}
 
@@ -15,6 +16,9 @@ const ForgotPassword: React.FC<forgotPasswordProps> = ({}) => {
     const [, forgotPassword] = useForgotPasswordMutation();
     return (
         <Wrapper variant="small">
+            <Head>
+                <title>Forgot Password • Spam</title>
+            </Head>
             <Formik
                 initialValues={{ email: "" }}
                 onSubmit={async (values) => {

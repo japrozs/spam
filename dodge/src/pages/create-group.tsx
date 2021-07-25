@@ -17,6 +17,7 @@ import { ChevronLeftIcon } from "@chakra-ui/icons";
 import { Editor } from "@tinymce/tinymce-react";
 import { extractEmails } from "../utils/extractEmails";
 import NextLink from "next/link";
+import Head from "next/head";
 
 const CreatePost: React.FC<{}> = ({}) => {
     const router = useRouter();
@@ -31,6 +32,9 @@ const CreatePost: React.FC<{}> = ({}) => {
 
     return (
         <Wrapper variant="regular">
+            <Head>
+                <title>Create New Group • Spam</title>
+            </Head>
             <NextLink href="/main">
                 <Text
                     cursor="pointer"

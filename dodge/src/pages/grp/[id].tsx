@@ -11,6 +11,7 @@ import {
 import NextLink from "next/link";
 import { ChevronLeftIcon } from "@chakra-ui/icons";
 import { Spinner } from "@chakra-ui/spinner";
+import Head from "next/head";
 
 interface GrpProps {}
 
@@ -33,6 +34,9 @@ const Grp: React.FC<GrpProps> = ({}) => {
             <Wrapper variant="medium">
                 {data && (
                     <>
+                        <Head>
+                            <title>{data.getGroup.name} group • Spam</title>
+                        </Head>
                         <NextLink href="/main">
                             <Text
                                 cursor="pointer"

@@ -1,5 +1,4 @@
-import { Box, Link } from "@chakra-ui/core";
-import { Button, Text } from "@chakra-ui/react";
+import { Box, Button, Text, Link } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
 import { NextPage } from "next";
 import { withUrqlClient } from "next-urql";
@@ -10,6 +9,7 @@ import { InputField } from "../../components/InputField";
 import { Wrapper } from "../../components/Wrapper";
 import { useChangePasswordMutation } from "../../generated/graphql";
 import { createUrqlClient } from "../../utils/createUrqlClient";
+import Head from 'next/head'
 import { toErrorMap } from "../../utils/toErrorMap";
 
 const ChangePassword: NextPage<{ token: string }> = () => {
@@ -18,6 +18,9 @@ const ChangePassword: NextPage<{ token: string }> = () => {
     const router = useRouter();
     return (
         <Wrapper variant="small">
+            <Head>
+                <title>Change Password • Spam</title>
+            </Head>
             <Formik
                 initialValues={{ newPassword: "" }}
                 onSubmit={async (values, { setErrors }) => {
@@ -67,7 +70,7 @@ const ChangePassword: NextPage<{ token: string }> = () => {
                                 </NextLink>
                             </Box>
                         ) : null}
-                        {/* <Button
+                        <Button
                             mt={4}
                             type="submit"
                             colorScheme="gray"
@@ -75,7 +78,7 @@ const ChangePassword: NextPage<{ token: string }> = () => {
                             variant="solid"
                         >
                             Change Password
-                        </Button> */}
+                        </Button>
                     </Form>
                 )}
             </Formik>

@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import { Wrapper } from "../components/Wrapper";
 import { createUrqlClient } from "../utils/createUrqlClient";
+import Head from "next/head";
 
 interface CheckEmailProps {}
 
@@ -13,6 +14,9 @@ const CheckEmail: React.FC<CheckEmailProps> = ({}) => {
 
     return (
         <Wrapper>
+            <Head>
+                <title>Check your email • Spam</title>
+            </Head>
             <Text fontSize="3xl" fontWeight="bold">
                 Check your email
             </Text>

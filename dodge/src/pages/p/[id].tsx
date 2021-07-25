@@ -12,6 +12,7 @@ import NextLink from "next/link";
 import { msToDate } from "../../utils/msToDate";
 import { generateReceiverList } from "../../utils/generateReceiverList";
 import { ChevronLeftIcon } from "@chakra-ui/icons";
+import Head from "next/head";
 
 interface PostProps {}
 
@@ -28,6 +29,9 @@ const Post: React.FC<PostProps> = ({}) => {
         <Wrapper variant="medium">
             {data && (
                 <Box>
+                    <Head>
+                        <title>{data.getPost.title} • Spam</title>
+                    </Head>
                     <NextLink href="/main">
                         <Text
                             cursor="pointer"

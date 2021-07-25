@@ -10,12 +10,16 @@ import { toErrorMap } from "../utils/toErrorMap";
 import { useRouter } from "next/router";
 import { withUrqlClient } from "next-urql";
 import { createUrqlClient } from "../utils/createUrqlClient";
+import Head from "next/head";
 
 const Login: React.FC<{}> = ({}) => {
     const router = useRouter();
     const [, login] = useLoginMutation();
     return (
         <Wrapper variant="small">
+            <Head>
+                <title>Login • Spam</title>
+            </Head>
             <Formik
                 initialValues={{ email: "", password: "" }}
                 onSubmit={async (values, { setErrors }) => {

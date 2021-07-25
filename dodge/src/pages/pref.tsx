@@ -20,6 +20,7 @@ import React, { useState } from "react";
 import { Wrapper } from "../components/Wrapper";
 import { useMeQuery } from "../generated/graphql";
 import { createUrqlClient } from "../utils/createUrqlClient";
+import Head from "next/head";
 
 interface PrefProps {}
 
@@ -32,6 +33,9 @@ const Pref: React.FC<PrefProps> = ({}) => {
 
     return (
         <Wrapper variant="medium">
+            <Head>
+                <title>Preferences • Spam</title>
+            </Head>
             {data && (
                 <Box m={2}>
                     <NextLink href="/main">

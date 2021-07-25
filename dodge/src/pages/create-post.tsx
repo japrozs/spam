@@ -31,6 +31,7 @@ import {
     MenuDivider,
 } from "@chakra-ui/react";
 import { Select } from "@chakra-ui/react";
+import Head from "next/head";
 
 const CreatePost: React.FC<{}> = ({}) => {
     const router = useRouter();
@@ -55,6 +56,9 @@ const CreatePost: React.FC<{}> = ({}) => {
 
     return (
         <Wrapper variant="regular">
+            <Head>
+                <title>Create New Post • Spam</title>
+            </Head>
             <NextLink href="/main">
                 <Text
                     cursor="pointer"

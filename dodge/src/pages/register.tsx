@@ -10,6 +10,7 @@ import { useRouter } from "next/router";
 import { withUrqlClient } from "next-urql";
 import { createUrqlClient } from "../utils/createUrqlClient";
 import NextLink from "next/link";
+import Head from "next/head";
 
 interface RegisterProps {}
 
@@ -19,6 +20,9 @@ const Register: React.FC<RegisterProps> = ({}) => {
 
     return (
         <Wrapper variant="small">
+            <Head>
+                <title>Sign up • Spam</title>
+            </Head>
             <Formik
                 initialValues={{ email: "", name: "", password: "" }}
                 onSubmit={async (values, { setErrors }) => {

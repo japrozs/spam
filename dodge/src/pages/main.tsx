@@ -10,6 +10,7 @@ import { createUrqlClient } from "../utils/createUrqlClient";
 import { RecipientList } from "../components/RecipientList";
 import { Spinner } from "@chakra-ui/spinner";
 import NextLink from "next/link";
+import Head from "next/head";
 
 interface mainProps {}
 
@@ -20,6 +21,9 @@ const Main: React.FC<mainProps> = ({}) => {
     console.log(d);
     return (
         <Box>
+            <Head>
+                <title>Dashboard • Spam</title>
+            </Head>
             <Navbar />
             <Box>
                 <Flex justifyContent="center" justifyItems="center">

@@ -16,6 +16,7 @@ import React from "react";
 import { useLogoutMutation, useMeQuery } from "../generated/graphql";
 import logo from "../public/logo.png";
 import { useRouter } from "next/router";
+import { truncate } from "../utils/truncate";
 
 interface NavbarProps {}
 
@@ -66,7 +67,7 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
                                     as={Button}
                                     rightIcon={<ChevronDownIcon />}
                                 >
-                                    {data?.me.name}
+                                    {truncate(data?.me.name, 18)}
                                 </MenuButton>
                                 <MenuList>
                                     <NextLink href="/pref">
