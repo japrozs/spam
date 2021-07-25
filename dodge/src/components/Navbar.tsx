@@ -26,67 +26,71 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
 
     return (
         <Flex className="nav" p={2} mb={5} alignItems="center">
-            <Box ml={8} width="50px" height="50px">
-                <Image src={logo} alt="Logo" />
-            </Box>
-            <Flex ml={"auto"} mr={"20px"} alignItems="center">
-                <Box mr={5}>
-                    <Menu>
-                        {/* <AddIcon /> */}
-                        <MenuButton
-                            backgroundColor="white"
-                            as={Button}
-                            variant="solid"
-                            border="1px solid lightgray"
-                        >
-                            <AddIcon />
-                        </MenuButton>
-                        <MenuList>
-                            <NextLink href="/create-post">
-                                <MenuItem fontWeight="medium">
-                                    New Post
-                                </MenuItem>
-                            </NextLink>
-                            <NextLink href="/create-group">
-                                <MenuItem fontWeight="medium">
-                                    New Group
-                                </MenuItem>
-                            </NextLink>
-                        </MenuList>
-                    </Menu>
-                </Box>
-                <Box>
-                    <Menu>
-                        <MenuButton
-                            backgroundColor="white"
-                            variant="solid"
-                            border="1px solid lightgray"
-                            as={Button}
-                            rightIcon={<ChevronDownIcon />}
-                        >
-                            {data?.me.email}
-                        </MenuButton>
-                        <MenuList>
-                            <NextLink href="/pref">
-                                <MenuItem fontWeight="medium">
-                                    Settings
-                                </MenuItem>
-                            </NextLink>
-                            <MenuDivider />
-                            <MenuItem
-                                fontWeight="medium"
-                                color={"red.500"}
-                                onClick={() => {
-                                    logout();
-                                    router.push("/");
-                                }}
-                            >
-                                Log out
-                            </MenuItem>
-                        </MenuList>
-                    </Menu>
-                </Box>
-            </Flex>
+            {data && data.me != null && (
+                <>
+                    <Box ml={8} width="50px" height="50px">
+                        <Image src={logo} alt="Logo" />
+                    </Box>
+                    <Flex ml={"auto"} mr={"20px"} alignItems="center">
+                        <Box mr={5}>
+                            <Menu>
+                                {/* <AddIcon /> */}
+                                <MenuButton
+                                    backgroundColor="white"
+                                    as={Button}
+                                    variant="solid"
+                                    border="1px solid lightgray"
+                                >
+                                    <AddIcon />
+                                </MenuButton>
+                                <MenuList>
+                                    <NextLink href="/create-post">
+                                        <MenuItem fontWeight="medium">
+                                            New Post
+                                        </MenuItem>
+                                    </NextLink>
+                                    <NextLink href="/create-group">
+                                        <MenuItem fontWeight="medium">
+                                            New Group
+                                        </MenuItem>
+                                    </NextLink>
+                                </MenuList>
+                            </Menu>
+                        </Box>
+                        <Box>
+                            <Menu>
+                                <MenuButton
+                                    backgroundColor="white"
+                                    variant="solid"
+                                    border="1px solid lightgray"
+                                    as={Button}
+                                    rightIcon={<ChevronDownIcon />}
+                                >
+                                    {data?.me.name}
+                                </MenuButton>
+                                <MenuList>
+                                    <NextLink href="/pref">
+                                        <MenuItem fontWeight="medium">
+                                            Settings
+                                        </MenuItem>
+                                    </NextLink>
+                                    <MenuDivider />
+                                    <MenuItem
+                                        fontWeight="medium"
+                                        color={"red.500"}
+                                        onClick={() => {
+                                            logout();
+                                            router.push("/");
+                                        }}
+                                    >
+                                        Log out
+                                    </MenuItem>
+                                </MenuList>
+                            </Menu>
+                        </Box>
+                    </Flex>
+                </>
+            )}
         </Flex>
     );
 };
