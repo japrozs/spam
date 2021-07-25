@@ -11,6 +11,7 @@ import { withUrqlClient } from "next-urql";
 import { createUrqlClient } from "../utils/createUrqlClient";
 import NextLink from "next/link";
 import Head from "next/head";
+import { ChevronLeftIcon } from "@chakra-ui/icons";
 
 interface RegisterProps {}
 
@@ -20,6 +21,21 @@ const Register: React.FC<RegisterProps> = ({}) => {
 
     return (
         <Wrapper variant="small">
+            <NextLink href="/">
+                <Text
+                    py={2}
+                    position="sticky"
+                    top="0"
+                    backgroundColor="white"
+                    cursor="pointer"
+                    color="gray.700"
+                    mb={5}
+                    fontSize="large"
+                    fontWeight="medium"
+                >
+                    <ChevronLeftIcon /> Go Back
+                </Text>
+            </NextLink>
             <Head>
                 <title>Sign up • Spam</title>
             </Head>

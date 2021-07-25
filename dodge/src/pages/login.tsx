@@ -11,12 +11,28 @@ import { useRouter } from "next/router";
 import { withUrqlClient } from "next-urql";
 import { createUrqlClient } from "../utils/createUrqlClient";
 import Head from "next/head";
+import { ChevronLeftIcon } from "@chakra-ui/icons";
 
 const Login: React.FC<{}> = ({}) => {
     const router = useRouter();
     const [, login] = useLoginMutation();
     return (
         <Wrapper variant="small">
+            <NextLink href="/">
+                <Text
+                    py={2}
+                    position="sticky"
+                    top="0"
+                    backgroundColor="white"
+                    cursor="pointer"
+                    color="gray.700"
+                    mb={5}
+                    fontSize="large"
+                    fontWeight="medium"
+                >
+                    <ChevronLeftIcon /> Go Back
+                </Text>
+            </NextLink>
             <Head>
                 <title>Login • Spam</title>
             </Head>
