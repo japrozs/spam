@@ -6,12 +6,14 @@ export const sendLetter = async (
     title: string
 ) => {
     let transporter = nodemailer.createTransport({
-        host: "smtp.ethereal.email",
+        host: "smtp.gmail.com",
         port: 587,
-        secure: false, // true for 465, false for other ports
+        secure: false,
+        requireTLS: true,
+        service: "gmail", // true for 465, false for other ports
         auth: {
-            user: "qkfrnkvqiykpx47v@ethereal.email", // generated ethereal user
-            pass: "WpgRF2Rnz3jCFq8QYQ", // generated ethereal password
+            user: process.env.EMAIL_ID,
+            pass: process.env.EMAIL_PASSWORD, // generated ethereal password
         },
     });
 

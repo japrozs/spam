@@ -34,6 +34,10 @@ const Post: React.FC<PostProps> = ({}) => {
                     </Head>
                     <NextLink href="/main">
                         <Text
+                            py={2}
+                            position="sticky"
+                            top="0"
+                            backgroundColor="white"
                             cursor="pointer"
                             color="gray.700"
                             mb={5}
@@ -51,12 +55,19 @@ const Post: React.FC<PostProps> = ({}) => {
                             No body
                         </Text>
                     ) : (
-                        <Text fontFamily="Lora" fontSize="xl" color="#353434">
-                            {data.getPost.body}
-                        </Text>
+                        <Text
+                            fontFamily="Lora"
+                            fontSize="xl"
+                            className="post_body"
+                            color="#353434"
+                            dangerouslySetInnerHTML={{
+                                __html: data.getPost.body,
+                            }}
+                        ></Text>
                     )}
                     <Text
-                        mt={2}
+                        my={10}
+                        fontSize="xl"
                         fontWeight="semibold"
                         color="gray.500"
                         dangerouslySetInnerHTML={{

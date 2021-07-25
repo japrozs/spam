@@ -29,6 +29,7 @@
         "@types/express-session": "^1.17.4",
         "@types/ioredis": "^4.26.6",
         "connect-redis": "^6.0.0",
+        "dotenv-safe": "^8.2.0",
         "express-session": "^1.17.2",
         "ioredis": "^4.27.6",
         "nodemailer": "^6.6.3",

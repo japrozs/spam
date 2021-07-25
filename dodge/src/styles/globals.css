@@ -28,3 +28,20 @@ a {
     border-bottom: 1px solid lightgray;
     background-color: #fff;
 }
+
+.post_body>* {
+    font-family: "Helvetica Neue";
+}
+
+.post_body a {
+    /* color: rgb(95, 95, 223); */
+    color: #48bb78;
+}
+
+.post_body a:hover {
+    color: #38a169;
+}
+
+.post_body h1 {
+    font-size: 40px;
+}

@@ -39,6 +39,10 @@ const Grp: React.FC<GrpProps> = ({}) => {
                         </Head>
                         <NextLink href="/main">
                             <Text
+                                py={2}
+                                position="sticky"
+                                top="0"
+                                backgroundColor="white"
                                 cursor="pointer"
                                 color="gray.700"
                                 mb={5}

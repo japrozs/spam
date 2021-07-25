@@ -105,8 +105,13 @@ export const Card: React.FC<CardProps> = ({
                     No body
                 </Text>
             ) : (
-                <Text fontFamily="Lora" fontSize="xl" color="#353434">
-                    {truncate(body.replace(/(<([^>]+)>)/gi, ""), 150)}
+                <Text
+                    class="post_body"
+                    fontFamily="Lora"
+                    fontSize="xl"
+                    color="#353434"
+                >
+                    {truncate(body.replace(/(<([^>]+)>)/gi, ""), 84)}
                 </Text>
             )}
 

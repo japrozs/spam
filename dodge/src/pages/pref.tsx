@@ -40,6 +40,10 @@ const Pref: React.FC<PrefProps> = ({}) => {
                 <Box m={2}>
                     <NextLink href="/main">
                         <Text
+                            py={2}
+                            position="sticky"
+                            top="0"
+                            backgroundColor="white"
                             cursor="pointer"
                             color="gray.700"
                             mb={5}

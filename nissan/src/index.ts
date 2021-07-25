@@ -1,3 +1,5 @@
+import "reflect-metadata";
+import "dotenv-safe/config";
 import { createConnection } from "typeorm";
 import express from "express";
 import Redis from "ioredis";

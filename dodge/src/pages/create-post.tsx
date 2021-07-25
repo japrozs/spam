@@ -61,6 +61,10 @@ const CreatePost: React.FC<{}> = ({}) => {
             </Head>
             <NextLink href="/main">
                 <Text
+                    py={2}
+                    position="sticky"
+                    top="0"
+                    backgroundColor="white"
                     cursor="pointer"
                     color="gray.700"
                     mb={5}
@@ -96,7 +100,7 @@ const CreatePost: React.FC<{}> = ({}) => {
                             },
                         });
                         if (!error) {
-                            router.push("/");
+                            router.push("/main");
                         }
                     }}
                 >
@@ -185,8 +189,8 @@ const CreatePost: React.FC<{}> = ({}) => {
                             </Box>
                             <Divider my={2} />
                             <Button
-                                mt={4}
-                                mb={4}
+                                mt={10}
+                                mb={20}
                                 variant="solid"
                                 border="1px solid lightgray"
                                 type="submit"
