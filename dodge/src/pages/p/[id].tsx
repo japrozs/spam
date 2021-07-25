@@ -34,6 +34,7 @@ const Post: React.FC<PostProps> = ({}) => {
                     </Head>
                     <NextLink href="/main">
                         <Text
+                            width={"100%"}
                             py={2}
                             position="sticky"
                             top="0"

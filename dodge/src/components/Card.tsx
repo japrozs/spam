@@ -20,6 +20,8 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import dayjs from "dayjs";
 import { msToDate } from "../utils/msToDate";
 import NextLink from "next/link";
+import { useDeletePostMutation } from "../generated/graphql";
+import Router from "next/router";
 
 dayjs.extend(relativeTime);
 
@@ -39,6 +41,7 @@ export const Card: React.FC<CardProps> = ({
     id,
 }) => {
     const router = useRouter();
+    const [, deletePost] = useDeletePostMutation();
     return (
         <Box
             borderRadius="0.2rem"
@@ -49,12 +52,9 @@ export const Card: React.FC<CardProps> = ({
             className="card"
             cursor="pointer"
             p={5}
-            backgroundColor="rgb(248, 248, 248)"
+            backgroundColor="#fff"
             _hover={{
-                backgroundColor: "#fff",
-            }}
-            onClick={() => {
-                router.push(`/p/${id}`);
+                backgroundColor: "rgb(247, 247, 247)",
             }}
         >
             <Flex alignItems="center">
@@ -65,6 +65,9 @@ export const Card: React.FC<CardProps> = ({
                             fontFamily="Lora"
                             fontWeight="semibold"
                             fontSize="35px"
+                            onClick={() => {
+                                router.push(`/p/${id}`);
+                            }}
                         >
                             No subject
                         </Text>
@@ -73,6 +76,9 @@ export const Card: React.FC<CardProps> = ({
                             fontFamily="Lora"
                             fontWeight="semibold"
                             fontSize="35px"
+                            onClick={() => {
+                                router.push(`/p/${id}`);
+                            }}
                         >
                             {truncate(subject, 13)}
                         </Text>
@@ -95,13 +101,30 @@ export const Card: React.FC<CardProps> = ({
                             <SettingsIcon fontSize="large" />
                         </MenuButton>
                         <MenuList>
-                            <MenuItem>Delete</MenuItem>
+                            <MenuItem
+                                fontWeight="semibold"
+                                onClick={async () => {
+                                    deletePost({
+                                        id,
+                                    });
+                                    Router.reload();
+                                }}
+                            >
+                                Delete
+                            </MenuItem>
                         </MenuList>
                     </Menu>
                 </Box>
             </Flex>
             {body.length == 0 ? (
-                <Text fontFamily="Lora" color="gray.500" fontSize="xl">
+                <Text
+                    onClick={() => {
+                        router.push(`/p/${id}`);
+                    }}
+                    fontFamily="Lora"
+                    color="gray.500"
+                    fontSize="xl"
+                >
                     No body
                 </Text>
             ) : (
@@ -110,6 +133,9 @@ export const Card: React.FC<CardProps> = ({
                     fontFamily="Lora"
                     fontSize="xl"
                     color="#353434"
+                    onClick={() => {
+                        router.push(`/p/${id}`);
+                    }}
                 >
                     {truncate(body.replace(/(<([^>]+)>)/gi, ""), 84)}
                 </Text>

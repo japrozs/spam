@@ -56,4 +56,14 @@ export class PostResolver {
     getPost(@Arg("id", () => Int) id: number, @Ctx() { req }: MyContext) {
         return Post.findOne({ where: { id, creatorId: req.session.userId } });
     }
+
+    @Mutation(() => Boolean)
+    @UseMiddleware(isAuth)
+    async deletePost(
+        @Arg("id", () => Int) id: number,
+        @Ctx() { req }: MyContext
+    ) {
+        await Post.delete({ id, creatorId: req.session.userId });
+        return true;
+    }
 }

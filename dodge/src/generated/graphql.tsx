@@ -44,6 +44,7 @@ export type Mutation = {
   login: UserResponse;
   logout?: Maybe<Scalars['Boolean']>;
   createPost: Post;
+  deletePost: Scalars['Boolean'];
   createGroup: Group;
   deleteGroup: Scalars['Boolean'];
 };
@@ -73,6 +74,11 @@ export type MutationLoginArgs = {
 
 export type MutationCreatePostArgs = {
   input: PostInput;
+};
+
+
+export type MutationDeletePostArgs = {
+  id: Scalars['Int'];
 };
 
 
@@ -216,6 +222,16 @@ export type DeleteGroupMutationVariables = Exact<{
 export type DeleteGroupMutation = (
   { __typename?: 'Mutation' }
   & Pick<Mutation, 'deleteGroup'>
+);
+
+export type DeletePostMutationVariables = Exact<{
+  id: Scalars['Int'];
+}>;
+
+
+export type DeletePostMutation = (
+  { __typename?: 'Mutation' }
+  & Pick<Mutation, 'deletePost'>
 );
 
 export type ForgotPasswordMutationVariables = Exact<{
@@ -398,6 +414,15 @@ export const DeleteGroupDocument = gql`
 
 export function useDeleteGroupMutation() {
   return Urql.useMutation<DeleteGroupMutation, DeleteGroupMutationVariables>(DeleteGroupDocument);
+};
+export const DeletePostDocument = gql`
+    mutation DeletePost($id: Int!) {
+  deletePost(id: $id)
+}
+    `;
+
+export function useDeletePostMutation() {
+  return Urql.useMutation<DeletePostMutation, DeletePostMutationVariables>(DeletePostDocument);
 };
 export const ForgotPasswordDocument = gql`
     mutation ForgotPassword($email: String!) {
