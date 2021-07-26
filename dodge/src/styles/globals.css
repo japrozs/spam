@@ -70,11 +70,21 @@ a {
     .rec_list {
         display: none;
     }
+    .group_list {
+        width: 40vw !important;
+        margin-right: -100px !important;
+    }
+    .middle_list {
+        width: 58vw !important;
+    }
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 700px) {
     .group_list {
         display: none;
+    }
+    .middle_list {
+        width: 95vw !important;
     }
 }
 
