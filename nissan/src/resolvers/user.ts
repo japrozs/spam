@@ -120,7 +120,7 @@ export class UserResolver {
             user.email,
             `<h1>Change your Spam password</h1>
       <h3>
-        Click here to <a href="http://localhost:3000/change-password/${token}">reset your password</a>
+        Click here to <a href="${process.env.WEBSITE_URL}/change-password/${token}">reset your password</a>
       </h3>`,
             "change"
         );
@@ -190,7 +190,7 @@ export class UserResolver {
             user.email,
             `<h1>Verify your email</h1>
       <h3>
-        Click here to <a href="http://localhost:4000/confirmation/${token}">confirm your account</a>
+        Click here to <a href="${process.env.SERVER_URL}/confirmation/${token}">confirm your account</a>
       </h3>`,
             "verify"
         );

@@ -24,7 +24,7 @@ export async function sendEmail(to: string, html: string, type: string) {
     let info = await transporter.sendMail({
         from: "sainifamily003@gmail.com", // sender address
         to, // list of receivers
-        subject: type == "change" ? "Change Password" : "Verify password", // Subject line
+        subject: type == "change" ? "Change your Spam Password" : "Verify your email adress", // Subject line
         html, // html body
     });
 

@@ -30,7 +30,7 @@ function sendEmail(to, html, type) {
         let info = yield transporter.sendMail({
             from: "sainifamily003@gmail.com",
             to,
-            subject: type == "change" ? "Change Password" : "Verify password",
+            subject: type == "change" ? "Change your Spam Password" : "Verify your email adress",
             html,
         });
         console.log("Message sent: %s", info.messageId);

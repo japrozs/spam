@@ -115,7 +115,7 @@ let UserResolver = class UserResolver {
             yield redis.set(constants_1.FORGET_PASSWORD_PREFIX + token, user.id, "ex", 1000 * 60 * 60 * 24 * 3);
             yield sendEmail_1.sendEmail(user.email, `<h1>Change your Spam password</h1>
       <h3>
-        Click here to <a href="http://localhost:3000/change-password/${token}">reset your password</a>
+        Click here to <a href="${process.env.WEBSITE_URL}/change-password/${token}">reset your password</a>
       </h3>`, "change");
             return true;
         });
@@ -166,7 +166,7 @@ let UserResolver = class UserResolver {
             yield redis.set(constants_1.VERIFY_EMAIL + token, user.id, "ex", 1000 * 60 * 60 * 24 * 3);
             yield sendEmail_1.sendEmail(user.email, `<h1>Verify your email</h1>
       <h3>
-        Click here to <a href="http://localhost:4000/confirmation/${token}">confirm your account</a>
+        Click here to <a href="${process.env.SERVER_URL}/confirmation/${token}">confirm your account</a>
       </h3>`, "verify");
             return { user };
         });

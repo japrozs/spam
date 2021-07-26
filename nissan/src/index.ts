@@ -40,7 +40,7 @@ const main = async () => {
 
     app.use(
         cors({
-            origin: "http://localhost:3000",
+            origin: process.env.WEBSITE_URL,
             credentials: true,
         })
     );
@@ -108,12 +108,12 @@ const main = async () => {
         );
 
         await redis.del(key);
-        return res.redirect("http://localhost:3000/login");
+        return res.redirect(`${process.env.WEBSITE_URL}/login`);
     });
     //* END CONFIRM EMAIL PATH
 
     app.listen(4000, () => {
-        console.log("🚀 Server started on http://localhost:4000");
+        console.log(`🚀 Server started on ${process.env.SERVER_URL}`);
     });
 };
 main().catch((err) => console.log("Error : " + err));

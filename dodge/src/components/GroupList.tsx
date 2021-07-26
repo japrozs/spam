@@ -97,7 +97,9 @@ export const GroupList: React.FC<GroupListProps> = ({}) => {
                     </Flex>
                 ))}
             {data && data.getGroups.length == 0 && (
-                <Text fontWeight="medium">You dont have any groups</Text>
+                <Text color="gray.500" fontWeight="medium">
+                    You don{"'"}t have any groups
+                </Text>
             )}
         </Box>
     );
