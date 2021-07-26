@@ -13,10 +13,14 @@ import { msToDate } from "../../utils/msToDate";
 import { generateReceiverList } from "../../utils/generateReceiverList";
 import { ChevronLeftIcon } from "@chakra-ui/icons";
 import Head from "next/head";
+import { Navbar } from "../../components/Navbar";
+import { useIsAuth } from "../../hooks/useIsAuth";
+import { Meta } from "../../components/Meta";
 
 interface PostProps {}
 
 const Post: React.FC<PostProps> = ({}) => {
+    useIsAuth();
     const router = useRouter();
     const id =
         typeof router.query.id == "string" ? parseInt(router.query.id) : -1;
@@ -29,25 +33,14 @@ const Post: React.FC<PostProps> = ({}) => {
         <Wrapper variant="medium">
             {data && (
                 <Box>
+                    <Navbar />
                     <Head>
                         <title>{data.getPost.title} • Spam</title>
+                        <Meta
+                            title={data.getPost.title}
+                            description={`${data.getPost.title} • Spam • Publish your thoughts to other peoples inbox`}
+                        />
                     </Head>
-                    <NextLink href="/main">
-                        <Text
-                            width={"100%"}
-                            py={2}
-                            position="sticky"
-                            top="0"
-                            backgroundColor="white"
-                            cursor="pointer"
-                            color="gray.700"
-                            mb={5}
-                            fontSize="large"
-                            fontWeight="medium"
-                        >
-                            <ChevronLeftIcon /> Go Back
-                        </Text>
-                    </NextLink>
                     <Text fontSize="4xl" fontWeight="semibold">
                         {data.getPost.title}
                     </Text>

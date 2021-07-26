@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Box, Button, Divider, FormLabel, Text } from "@chakra-ui/react";
+import { Box, Button, Divider, Flex, FormLabel, Text } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
 import { withUrqlClient } from "next-urql";
 import { useRouter } from "next/router";
@@ -32,6 +32,8 @@ import {
 } from "@chakra-ui/react";
 import { Select } from "@chakra-ui/react";
 import Head from "next/head";
+import { Navbar } from "../components/Navbar";
+import { Meta } from "../components/Meta";
 
 const CreatePost: React.FC<{}> = ({}) => {
     const router = useRouter();
@@ -55,155 +57,164 @@ const CreatePost: React.FC<{}> = ({}) => {
     };
 
     return (
-        <Wrapper variant="regular">
-            <Head>
-                <title>Create New Post • Spam</title>
-            </Head>
-            <NextLink href="/main">
-                <Text
-                    py={2}
-                    position="sticky"
-                    top="0"
-                    backgroundColor="white"
-                    cursor="pointer"
-                    color="gray.700"
-                    mb={5}
-                    fontSize="large"
-                    fontWeight="medium"
-                >
-                    <ChevronLeftIcon /> Go Back
-                </Text>
-            </NextLink>
-            {data && (
-                <Formik
-                    initialValues={{
-                        group: "",
-                        receivers: "",
-                        title: "",
-                    }}
-                    onSubmit={async (values) => {
-                        let emails;
-                        if (values.receivers.trim().length > 0) {
-                            emails = extractEmails(values.receivers);
-                        } else {
-                            emails = extract(group);
-                        }
-                        // console.log("title : ", values.title);
-                        // console.log("body : ", body);
-                        // console.log("Recipients : ", emails);
-                        console.log(emails);
-                        const { error } = await createPost({
-                            input: {
-                                title: values.title,
-                                body: body,
-                                receivers: emails,
-                            },
-                        });
-                        if (!error) {
-                            router.push("/main");
-                        }
-                    }}
-                >
-                    {({ isSubmitting }) => (
-                        <Form>
-                            <EditorField
-                                name="title"
-                                placeholder="Title"
-                                label="Title"
-                            />
-                            {/* <Box mt={4}>
+        <>
+            <Navbar />
+            <Wrapper variant="regular">
+                <Head>
+                    <title>Create New Post • Spam</title>
+                    <Meta
+                        title="Create a new post"
+                        description="Create a new post • Spam • Publish your thoughts to other peoples inbox"
+                    />
+                </Head>
+                {data && (
+                    <Formik
+                        initialValues={{
+                            group: "",
+                            receivers: "",
+                            title: "",
+                        }}
+                        onSubmit={async (values) => {
+                            let emails;
+                            if (values.receivers.trim().length > 0) {
+                                emails = extractEmails(values.receivers);
+                            } else {
+                                emails = extract(group);
+                            }
+                            // console.log("title : ", values.title);
+                            // console.log("body : ", body);
+                            // console.log("Recipients : ", emails);
+                            console.log(emails);
+                            const { error } = await createPost({
+                                input: {
+                                    title: values.title,
+                                    body: body,
+                                    receivers: emails,
+                                },
+                            });
+                            if (!error) {
+                                router.push("/main");
+                            }
+                        }}
+                    >
+                        {({ isSubmitting }) => (
+                            <Form>
+                                <EditorField
+                                    name="title"
+                                    placeholder="Title"
+                                    label="Title"
+                                />
+                                {/* <Box mt={4}>
                             <TextField
                                 name="body"
                                 placeholder="Body..."
                                 label="Body"
                             />
                         </Box> */}
-                            <Box mt={4}>
-                                <FormLabel
-                                    fontSize="xl"
-                                    fontWeight="bold"
-                                    htmlFor={"Content"}
-                                >
-                                    Content
-                                </FormLabel>
-                                <Editor
-                                    apiKey={
-                                        process.env.NEXT_PUBLIC_TINYMCE_API_KEY
-                                    }
-                                    initialValue="<p>Initial content</p>"
-                                    init={{
-                                        height: 500,
-                                        menubar: false,
-                                        plugins: [
-                                            "advlist autolink lists link image",
-                                            "charmap print preview anchor help",
-                                            "searchreplace visualblocks code",
-                                            "insertdatetime media table paste wordcount",
-                                        ],
-                                        toolbar:
-                                            "undo redo | formatselect | bold italic | \
+                                <Box mt={4}>
+                                    <FormLabel
+                                        fontSize="xl"
+                                        fontWeight="bold"
+                                        htmlFor={"Content"}
+                                    >
+                                        Content
+                                    </FormLabel>
+                                    <Editor
+                                        apiKey={
+                                            process.env
+                                                .NEXT_PUBLIC_TINYMCE_API_KEY
+                                        }
+                                        initialValue="<p>Once upon a time ...</p>"
+                                        init={{
+                                            height: 500,
+                                            menubar: false,
+                                            plugins: [
+                                                "advlist autolink lists link image",
+                                                "charmap print preview anchor help",
+                                                "searchreplace visualblocks code",
+                                                "insertdatetime media table paste wordcount",
+                                            ],
+                                            toolbar:
+                                                "undo redo | formatselect | bold italic | \
             alignleft aligncenter alignright | \
             bullist numlist outdent indent | help",
-                                    }}
-                                    onChange={handleEditorChange}
-                                />
-                            </Box>
-                            <Box mt={4}>
-                                <Text
-                                    fontSize="xl"
-                                    mb={2}
-                                    fontWeight="semibold"
-                                >
-                                    Recipients
-                                </Text>
-                                {data.getGroups.length != 0 && (
-                                    <Select
-                                        name="group"
-                                        value={group}
-                                        onChange={(e) => {
-                                            setGroup(e.target.value);
                                         }}
+                                        onChange={handleEditorChange}
+                                    />
+                                </Box>
+                                <Box mt={4}>
+                                    <Text
+                                        fontSize="xl"
+                                        mb={2}
                                         fontWeight="semibold"
-                                        placeholder="Select group"
                                     >
-                                        {data &&
-                                            data.getGroups.map((grp) => (
-                                                <option
-                                                    key={grp.id}
-                                                    value={grp.name}
-                                                >
-                                                    {grp.name}
-                                                </option>
-                                            ))}
-                                    </Select>
-                                )}
-                                {data.getGroups.length == 0 && (
-                                    <Box mt={4}>
-                                        <EditorField
-                                            name="receivers"
-                                            placeholder="johndoe@gmail.com, janedo@gmail.com, abc@gmail.com"
-                                            label="Receivers (seperated by commas)"
-                                        />
-                                    </Box>
-                                )}
-                            </Box>
-                            <Divider my={2} />
-                            <Button
-                                mt={10}
-                                mb={20}
-                                variant="solid"
-                                border="1px solid lightgray"
-                                type="submit"
-                                colorScheme="gray"
-                                isLoading={isSubmitting}
-                            >
-                                Create Post
-                            </Button>
-                        </Form>
-                    )}
-                </Formik>
-            )}
-        </Wrapper>
+                                        Recipients
+                                    </Text>
+                                    {data.getGroups.length != 0 && (
+                                        <Select
+                                            name="group"
+                                            value={group}
+                                            onChange={(e) => {
+                                                setGroup(e.target.value);
+                                            }}
+                                            fontWeight="semibold"
+                                            placeholder="Select group"
+                                        >
+                                            {data &&
+                                                data.getGroups.map((grp) => (
+                                                    <option
+                                                        key={grp.id}
+                                                        value={grp.name}
+                                                    >
+                                                        {grp.name}
+                                                    </option>
+                                                ))}
+                                        </Select>
+                                    )}
+                                    {data.getGroups.length == 0 && (
+                                        <Box mt={4}>
+                                            <EditorField
+                                                name="receivers"
+                                                placeholder="johndoe@gmail.com, janedo@gmail.com, abc@gmail.com"
+                                                label="Receivers (seperated by commas)"
+                                            />
+                                        </Box>
+                                    )}
+                                </Box>
+                                <Divider my={2} />
+                                <Flex>
+                                    <Button
+                                        mt={10}
+                                        mb={20}
+                                        variant="solid"
+                                        border="1px solid lightgray"
+                                        type="submit"
+                                        colorScheme="gray"
+                                        isLoading={isSubmitting}
+                                    >
+                                        Create Post
+                                    </Button>
+                                    <Button
+                                        ml={"auto"}
+                                        mr={0}
+                                        mt={10}
+                                        onClick={() => {
+                                            router.push("/main");
+                                        }}
+                                        mb={20}
+                                        variant="solid"
+                                        border="1px solid lightgray"
+                                        color="red.500"
+                                    >
+                                        Cancel
+                                    </Button>
+                                </Flex>
+                            </Form>
+                        )}
+                    </Formik>
+                )}
+            </Wrapper>
+        </>
     );
 };
 export default withUrqlClient(createUrqlClient)(CreatePost);

@@ -12,9 +12,8 @@ import { Spinner } from "@chakra-ui/spinner";
 import NextLink from "next/link";
 import Head from "next/head";
 import { searchPost } from "../utils/searchPost";
-import { useScreenType } from "../hooks/useScreenType";
 import { MiddleSection } from "../layouts/MiddleSection";
-import { Layout } from "../layouts/Layout";
+import { Meta } from "../components/Meta";
 
 interface mainProps {}
 
@@ -26,14 +25,18 @@ const Main: React.FC<mainProps> = ({}) => {
         <Box>
             <Head>
                 <title>Dashboard • Spam</title>
+                <Meta
+                    title="Spam | Post your thoughts to other people's inboxes"
+                    description="Spam • Publish your thoughts to other peoples inbox"
+                />
             </Head>
             <Navbar />
             <Flex wrap="wrap" justifyContent="center" justifyItems="center">
-                <Box mr={"3vw"}>
+                <Box className="group_list" mr={"3vw"}>
                     <GroupList />
                 </Box>
                 <MiddleSection />
-                <Box ml={"auto"} mr={"30px"}>
+                <Box className="rec_list" ml={"auto"} mr={"30px"}>
                     <RecipientList />
                 </Box>
             </Flex>

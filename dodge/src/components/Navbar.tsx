@@ -29,8 +29,14 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
         <Flex className="nav" p={2} mb={5} alignItems="center">
             {data && data.me != null && (
                 <>
-                    <Box ml={8} width="50px" height="50px">
-                        <Image src={logo} alt="Logo" />
+                    <Box ml={8} width="50px" height="50px" cursor="pointer">
+                        <Image
+                            onClick={() => {
+                                router.push("/main");
+                            }}
+                            src={logo}
+                            alt="Logo"
+                        />
                     </Box>
                     <Flex ml={"auto"} mr={"20px"} alignItems="center">
                         <Box mr={5}>

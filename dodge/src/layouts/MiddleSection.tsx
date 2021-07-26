@@ -5,8 +5,6 @@ import { useGetPostsQuery } from "../generated/graphql";
 import { searchPost } from "../utils/searchPost";
 import { Spinner } from "@chakra-ui/spinner";
 import { useMediaQuery } from "react-responsive";
-import { useScreenType } from "../hooks/useScreenType";
-import { Layout } from "./Layout";
 
 interface MainLayoutProps {}
 
@@ -14,7 +12,7 @@ export const MiddleSection: React.FC<MainLayoutProps> = ({}) => {
     const [{ data, fetching }] = useGetPostsQuery();
     const [searchQuery, setSearchQuery] = useState("");
     return (
-        <Box margin={0} padding={0}>
+        <Box className="middle_list" margin={0} padding={0}>
             <Text mb={3} fontWeight="semibold" fontSize="4xl">
                 😃 Your Newsletters
             </Text>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Box, Button, FormLabel, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, FormLabel, Text } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
 import { withUrqlClient } from "next-urql";
 import { useRouter } from "next/router";
@@ -18,6 +18,8 @@ import { Editor } from "@tinymce/tinymce-react";
 import { extractEmails } from "../utils/extractEmails";
 import NextLink from "next/link";
 import Head from "next/head";
+import { Navbar } from "../components/Navbar";
+import { Meta } from "../components/Meta";
 
 const CreatePost: React.FC<{}> = ({}) => {
     const router = useRouter();
@@ -31,74 +33,82 @@ const CreatePost: React.FC<{}> = ({}) => {
     };
 
     return (
-        <Wrapper variant="regular">
-            <Head>
-                <title>Create New Group • Spam</title>
-            </Head>
-            <NextLink href="/main">
-                <Text
-                    py={2}
-                    position="sticky"
-                    top="0"
-                    backgroundColor="white"
-                    cursor="pointer"
-                    color="gray.700"
-                    mb={5}
-                    fontSize="large"
-                    fontWeight="medium"
+        <>
+            <Navbar />
+            <Wrapper variant="regular">
+                <Head>
+                    <title>Create New Group • Spam</title>
+                    <Meta
+                        title="Create your own mailing group"
+                        description="Create your own mailing group • Spam • Publish your thoughts to other peoples inbox"
+                    />
+                </Head>
+                <Formik
+                    initialValues={{
+                        name: "",
+                        receivers: "",
+                    }}
+                    onSubmit={async (values) => {
+                        const emails = extractEmails(values.receivers);
+                        // console.log("Name : ", values.name);
+                        // console.log("Recipients : ", emails);
+                        const { error } = await createGroup({
+                            input: {
+                                name: values.name,
+                                emails: emails,
+                            },
+                        });
+                        if (!error) {
+                            router.push("/");
+                        }
+                    }}
                 >
-                    <ChevronLeftIcon /> Go Back
-                </Text>
-            </NextLink>
-            <Formik
-                initialValues={{
-                    name: "",
-                    receivers: "",
-                }}
-                onSubmit={async (values) => {
-                    const emails = extractEmails(values.receivers);
-                    // console.log("Name : ", values.name);
-                    // console.log("Recipients : ", emails);
-                    const { error } = await createGroup({
-                        input: {
-                            name: values.name,
-                            emails: emails,
-                        },
-                    });
-                    if (!error) {
-                        router.push("/");
-                    }
-                }}
-            >
-                {({ isSubmitting }) => (
-                    <Form>
-                        <EditorField
-                            name="name"
-                            placeholder="Name"
-                            label="Name"
-                        />
-                        <Box mt={4}>
+                    {({ isSubmitting }) => (
+                        <Form>
                             <EditorField
-                                name="receivers"
-                                placeholder="johndoe@gmail.com, janedo@gmail.com, abc@gmail.com"
-                                label="Receivers (seperated by commas)"
+                                name="name"
+                                placeholder="Name"
+                                label="Name"
                             />
-                        </Box>
-                        <Button
-                            mt={4}
-                            mb={4}
-                            variant="solid"
-                            border="1px solid lightgray"
-                            type="submit"
-                            colorScheme="gray"
-                            isLoading={isSubmitting}
-                        >
-                            Create Group
-                        </Button>
-                    </Form>
-                )}
-            </Formik>
-        </Wrapper>
+                            <Box mt={4}>
+                                <EditorField
+                                    name="receivers"
+                                    placeholder="johndoe@gmail.com, janedo@gmail.com, abc@gmail.com"
+                                    label="Receivers (seperated by commas)"
+                                />
+                            </Box>
+                            <Flex>
+                                <Button
+                                    mt={4}
+                                    mb={4}
+                                    variant="solid"
+                                    border="1px solid lightgray"
+                                    type="submit"
+                                    colorScheme="gray"
+                                    isLoading={isSubmitting}
+                                >
+                                    Create Group
+                                </Button>
+                                <Button
+                                    ml={"auto"}
+                                    mr={0}
+                                    mt={10}
+                                    onClick={() => {
+                                        router.push("/main");
+                                    }}
+                                    mb={20}
+                                    variant="solid"
+                                    border="1px solid lightgray"
+                                    color="red.500"
+                                >
+                                    Cancel
+                                </Button>
+                            </Flex>
+                        </Form>
+                    )}
+                </Formik>
+            </Wrapper>
+        </>
     );
 };
 export default withUrqlClient(createUrqlClient)(CreatePost);

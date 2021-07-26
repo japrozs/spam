@@ -1,5 +1,6 @@
 import { ColorModeScript } from "@chakra-ui/react";
 import NextDocument, { Html, Head, Main, NextScript } from "next/document";
+import { Meta } from "../components/Meta";
 import theme from "../theme";
 export default class Document extends NextDocument {
     render() {
@@ -11,6 +12,7 @@ export default class Document extends NextDocument {
                         href="https://fonts.googleapis.com"
                     />
                     <link rel="preconnect" href="https://fonts.gstatic.com" />
+                    {/* eslint-disable-next-line @next/next/no-page-custom-font */}
                     <link
                         href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap"
                         rel="stylesheet"
@@ -39,6 +41,7 @@ export default class Document extends NextDocument {
                         color="#5bbad5"
                     />
                     <meta name="theme-color" content="#ffffff" />
+                    <Meta title="Spam • Publish your thoughts to other peoples inbox" />
                 </Head>
                 <body>
                     <ColorModeScript

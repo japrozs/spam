@@ -12,10 +12,14 @@ import NextLink from "next/link";
 import { ChevronLeftIcon } from "@chakra-ui/icons";
 import { Spinner } from "@chakra-ui/spinner";
 import Head from "next/head";
+import { Navbar } from "../../components/Navbar";
+import { useIsAuth } from "../../hooks/useIsAuth";
+import { Meta } from "../../components/Meta";
 
 interface GrpProps {}
 
 const Grp: React.FC<GrpProps> = ({}) => {
+    useIsAuth();
     const router = useRouter();
     const intId =
         typeof router.query.id == "string" ? parseInt(router.query.id) : -1;
@@ -31,11 +35,16 @@ const Grp: React.FC<GrpProps> = ({}) => {
     }
     return (
         <Box>
+            <Navbar />
             <Wrapper variant="medium">
                 {data && (
                     <>
                         <Head>
                             <title>{data.getGroup.name} group • Spam</title>
+                            <Meta
+                                title={data.getGroup.name}
+                                description={`${data.getGroup.name} • Spam • Publish your thoughts to other peoples inbox`}
+                            />
                         </Head>
                         <NextLink href="/main">
                             <Text

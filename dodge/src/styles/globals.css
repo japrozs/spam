@@ -45,3 +45,38 @@ a {
 .post_body h1 {
     font-size: 40px;
 }
+
+
+/* .rec_list,
+.group_list,
+.middle_list {
+    
+} */
+
+
+/* -------------- RESPONSIVE MEDIA QUERIES ------------------*/
+
+
+/* 
+@media only screen and (max-width: 1336px) {
+    .rec_list,
+    .group_list,
+    .middle_list {
+        background-color: red;
+    }
+} */
+
+@media only screen and (max-width: 1000px) {
+    .rec_list {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .group_list {
+        display: none;
+    }
+}
+
+
+/* -------------- END RESPONSIVE MEDIA QUERIES ------------------*/
