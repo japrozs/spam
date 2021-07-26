@@ -2,6 +2,7 @@ import "../styles/globals.css";
 import { ChakraProvider, useColorMode } from "@chakra-ui/react";
 import theme from "../theme";
 import "../styles/Card.css";
+import "../styles/Hero.css";
 
 function MyApp({ Component, pageProps }) {
     return (
