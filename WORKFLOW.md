@@ -25,6 +25,7 @@ git pull origin develop
 git add .
 git push
 git commit -m "update prod branch"
+git push
 ```
 
 ## After this, the changes will be deployed to the hosting provider
