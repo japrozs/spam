@@ -10,7 +10,7 @@ export const Hero: React.FC<HeroProps> = ({}) => {
         <Box>
             <div className="hero">
                 <div className="text">
-                    <Text fontWeight="bold" fontSize="4xl">
+                    <Text className="intro" fontWeight="bold" fontSize="5xl">
                         Post your{" "}
                         <span style={{ color: "#46C3DB" }}>thoughts</span> to
                         peoples{" "}
@@ -23,7 +23,7 @@ export const Hero: React.FC<HeroProps> = ({}) => {
                         lists—Saffron’s everything a cook needs.
                     </Text>
                     <Button
-                        mt={5}
+                        my={5}
                         color="#fff"
                         _hover={{
                             backgroundColor: "rgb(28, 28, 28)",

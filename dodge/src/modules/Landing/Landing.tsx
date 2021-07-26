@@ -4,6 +4,9 @@ import { Meta } from "../../components/Meta";
 import { IndexNav as Navbar } from "./IndexNav";
 import { Hero } from "../screens/Hero";
 import { Features } from "../screens/Features";
+import { Usage } from "../screens/Usage";
+import { GetStarted } from "../screens/GetStarted";
+import { Footer } from "../screens/Footer";
 
 interface LandingProps {}
 
@@ -19,6 +22,9 @@ export const Landing: React.FC<LandingProps> = ({}) => {
             <Navbar />
             <Hero />
             <Features />
+            <Usage />
+            <GetStarted />
+            <Footer />
         </>
     );
 };

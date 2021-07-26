@@ -1,0 +1,11 @@
+.get {
+    padding: 6vh 10vw;
+    background-image: url("../../public/images/pattern.png");
+}
+
+@media only screen and (max-width: 500px) {
+    .get p {
+        font-size: 50px;
+        line-height: 65px;
+    }
+}

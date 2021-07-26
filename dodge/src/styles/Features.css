@@ -1,0 +1,30 @@
+.features {
+    display: flex;
+    padding: 50px 1vw;
+    justify-content: center;
+}
+
+.features .img {
+    width: 45vw;
+    margin-right: 2vw;
+    border: 1px solid lightgray;
+    border-radius: 0.4rem;
+}
+
+.features .text {
+    width: 45vw;
+    margin-left: 2vw;
+}
+
+.divider {
+    border-color: gray !important;
+}
+
+@media only screen and (max-width: 780px) {
+    .features .img {
+        display: none;
+    }
+    .features .text {
+        width: 90%;
+    }
+}
