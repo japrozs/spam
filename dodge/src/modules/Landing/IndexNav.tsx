@@ -1,7 +1,7 @@
 import { Box, Button, ButtonGroup, Flex, Text } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import logo from "../../../public/logo.png";
+import logo from "../../../public/logo_svg.svg";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 
@@ -34,7 +34,7 @@ export const IndexNav: React.FC<IndexNavProps> = ({}) => {
             alignItems="center"
             backgroundColor={colored ? "rgba(255, 255, 255, 0.94)" : "#fff"}
         >
-            <Box ml={2} width="50px" height="50px" cursor="pointer">
+            <Flex width="100px" alignItems="center" ml={2} cursor="pointer">
                 <Image
                     onClick={() => {
                         router.push("/");
@@ -42,7 +42,7 @@ export const IndexNav: React.FC<IndexNavProps> = ({}) => {
                     src={logo}
                     alt="Logo"
                 />
-            </Box>
+            </Flex>
             <Flex ml={"auto"} mr={1} alignItems="center">
                 <Text
                     transition="color 0.2s ease"
