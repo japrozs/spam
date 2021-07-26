@@ -1,8 +1,9 @@
-import { Box, Divider, Text } from "@chakra-ui/react";
+import { Box, Divider, Flex, Text } from "@chakra-ui/react";
 import { Spinner } from "@chakra-ui/spinner";
 import React, { useState } from "react";
 import { useGetPostsQuery } from "../generated/graphql";
 import { genRecipientList } from "../utils/genRecipientList";
+import { EmailIcon } from "@chakra-ui/icons";
 
 interface RecipientListProps {}
 
@@ -33,16 +34,18 @@ export const RecipientList: React.FC<RecipientListProps> = ({}) => {
             )}
             {data &&
                 genRecipientList(data.getPosts).map((a) => (
-                    <Text
-                        color="gray.600"
-                        _hover={{
-                            color: "gray.800",
-                        }}
-                        fontWeight="medium"
-                        key={a.id}
-                    >
-                        {a.email}
-                    </Text>
+                    <Flex key={a.id} alignItems="center">
+                        <EmailIcon color="gray.400" mr={2} />
+                        <Text
+                            color="gray.600"
+                            _hover={{
+                                color: "gray.800",
+                            }}
+                            fontWeight="medium"
+                        >
+                            {a.email}
+                        </Text>
+                    </Flex>
                 ))}
             {data && genRecipientList(data.getPosts).length == 0 && (
                 <Text color="gray.500" fontWeight="medium">
