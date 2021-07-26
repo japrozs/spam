@@ -6,6 +6,7 @@ import {
     InputRightElement,
     Text,
 } from "@chakra-ui/react";
+import NextLink from "next/link";
 import React from "react";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 
@@ -23,18 +24,20 @@ export const GetStarted: React.FC<GetStartedProps> = ({}) => {
                 Get started
                 <br /> for free today
             </Text>
-            <Button
-                my={5}
-                color="#fff"
-                _hover={{
-                    backgroundColor: "rgb(28, 28, 28)",
-                }}
-                className="start"
-                backgroundColor="#000"
-            >
-                Get Started
-                <ChevronRightIcon ml={1} fontSize="xl" />
-            </Button>
+            <NextLink href="/register">
+                <Button
+                    my={5}
+                    color="#fff"
+                    _hover={{
+                        backgroundColor: "rgb(28, 28, 28)",
+                    }}
+                    className="start"
+                    backgroundColor="#000"
+                >
+                    Get Started
+                    <ChevronRightIcon ml={1} fontSize="xl" />
+                </Button>
+            </NextLink>
         </Box>
     );
 };

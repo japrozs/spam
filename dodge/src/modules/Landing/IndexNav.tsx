@@ -2,6 +2,7 @@ import { Box, Button, ButtonGroup, Flex, Text } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import logo from "../../../public/logo.png";
+import NextLink from "next/link";
 import { useRouter } from "next/router";
 
 interface IndexNavProps {}
@@ -55,19 +56,23 @@ export const IndexNav: React.FC<IndexNavProps> = ({}) => {
                 >
                     Contact
                 </Text>
-                <Button variant="outline" color="#000" mr={5}>
-                    Sign In
-                </Button>
-                <Button
-                    _hover={{
-                        backgroundColor: "#000",
-                        color: "white",
-                    }}
-                    backgroundColor="#fff"
-                    border={"1px solid #000"}
-                >
-                    Sign up
-                </Button>
+                <NextLink href="/login">
+                    <Button variant="outline" color="#000" mr={5}>
+                        Sign In
+                    </Button>
+                </NextLink>
+                <NextLink href="/register">
+                    <Button
+                        _hover={{
+                            backgroundColor: "#000",
+                            color: "white",
+                        }}
+                        backgroundColor="#fff"
+                        border={"1px solid #000"}
+                    >
+                        Sign up
+                    </Button>
+                </NextLink>
             </Flex>
         </Flex>
     );
