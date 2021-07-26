@@ -29,6 +29,8 @@ const Post: React.FC<PostProps> = ({}) => {
             id,
         },
     });
+
+    console.log(data?.getPost?.body);
     return (
         <>
             <Navbar />

@@ -53,7 +53,7 @@ const Login: React.FC<{}> = ({}) => {
                             router.push(router.query.next);
                         } else {
                             // login worked
-                            router.push("/");
+                            router.push("/main");
                         }
                     }
                 }}

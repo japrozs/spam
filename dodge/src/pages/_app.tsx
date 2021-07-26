@@ -6,6 +6,7 @@ import "../styles/Hero.css";
 import "../styles/Features.css";
 import "../styles/Usage.css";
 import "../styles/GetStarted.css";
+import "../styles/postStyles.css";
 
 function MyApp({ Component, pageProps }) {
     return (

@@ -50,7 +50,6 @@ export const Card: React.FC<CardProps> = ({
             mr={5}
             mb={5}
             className="card"
-            cursor="pointer"
             p={5}
             backgroundColor="#fff"
             _hover={{
@@ -68,11 +67,13 @@ export const Card: React.FC<CardProps> = ({
                             onClick={() => {
                                 router.push(`/p/${id}`);
                             }}
+                            cursor="pointer"
                         >
                             No subject
                         </Text>
                     ) : (
                         <Text
+                            cursor="pointer"
                             fontFamily="Lora"
                             fontWeight="semibold"
                             fontSize="35px"
@@ -124,6 +125,7 @@ export const Card: React.FC<CardProps> = ({
                     fontFamily="Lora"
                     color="gray.500"
                     fontSize="xl"
+                    cursor="pointer"
                 >
                     No body
                 </Text>
@@ -131,6 +133,7 @@ export const Card: React.FC<CardProps> = ({
                 <Text
                     fontFamily="Lora"
                     fontSize="xl"
+                    cursor="pointer"
                     color="#353434"
                     onClick={() => {
                         router.push(`/p/${id}`);
