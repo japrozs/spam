@@ -129,7 +129,6 @@ export const Card: React.FC<CardProps> = ({
                 </Text>
             ) : (
                 <Text
-                    class="post_body"
                     fontFamily="Lora"
                     fontSize="xl"
                     color="#353434"

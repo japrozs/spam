@@ -28,7 +28,7 @@ const Login: React.FC<{}> = ({}) => {
                     color="gray.700"
                     mb={5}
                     fontSize="large"
-                    fontWeight="medium"
+                    fontWeight="semibold"
                 >
                     <ChevronLeftIcon /> Go Back
                 </Text>

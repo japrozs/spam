@@ -35,8 +35,9 @@ export const RecipientList: React.FC<RecipientListProps> = ({}) => {
             {data &&
                 genRecipientList(data.getPosts).map((a) => (
                     <Flex key={a.id} alignItems="center">
-                        <EmailIcon color="gray.400" mr={2} />
+                        <EmailIcon key={a.id} color="gray.400" mr={2} />
                         <Text
+                            key={a.id}
                             color="gray.600"
                             _hover={{
                                 color: "gray.800",

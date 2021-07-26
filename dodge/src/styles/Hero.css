@@ -17,6 +17,10 @@
     margin-left: 40px;
 }
 
+.intro {
+    line-height: 65px;
+}
+
 .hero .img {
     border-radius: 0.4rem;
     border: 1px solid lightgray;
@@ -25,8 +29,11 @@
 @media only screen and (max-width: 1040px) {
     .hero {
         flex-wrap: wrap;
-        justify-content: left;
+        justify-content: center;
         padding: 30px;
+    }
+    .intro {
+        line-height: 50px;
     }
     .hero .text {
         width: 500px;
@@ -36,6 +43,7 @@
     }
     .hero .img {
         width: 500px;
+        margin: 0;
     }
 }
 
@@ -46,6 +54,7 @@
     }
     .intro {
         font-size: 35px !important;
+        line-height: 45px;
     }
     .hero .img {
         margin: 0;

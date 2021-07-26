@@ -34,6 +34,8 @@ import { Select } from "@chakra-ui/react";
 import Head from "next/head";
 import { Navbar } from "../components/Navbar";
 import { Meta } from "../components/Meta";
+import { parse } from "node-html-parser";
+import { addStyle } from "../utils/addStyles";
 
 const CreatePost: React.FC<{}> = ({}) => {
     const router = useRouter();
@@ -42,6 +44,8 @@ const CreatePost: React.FC<{}> = ({}) => {
     const [{ data, fetching }] = useGetGroupsQuery();
     const [body, setBody] = useState("");
     const [group, setGroup] = useState("");
+
+    console.log();
 
     const handleEditorChange = (e) => {
         // console.log("Content was updated:", e.target.getContent());
@@ -84,7 +88,8 @@ const CreatePost: React.FC<{}> = ({}) => {
                             // console.log("title : ", values.title);
                             // console.log("body : ", body);
                             // console.log("Recipients : ", emails);
-                            console.log(emails);
+                            // setBody(addStyle(body));
+                            // console.log(body);
                             const { error } = await createPost({
                                 input: {
                                     title: values.title,

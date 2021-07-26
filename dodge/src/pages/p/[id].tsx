@@ -30,57 +30,63 @@ const Post: React.FC<PostProps> = ({}) => {
         },
     });
     return (
-        <Wrapper variant="medium">
-            {data && (
-                <Box>
-                    <Navbar />
-                    <Head>
-                        <title>{data.getPost.title} • Spam</title>
-                        <Meta
-                            title={data.getPost.title}
-                            description={`${data.getPost.title} • Spam • Publish your thoughts to other peoples inbox`}
-                        />
-                    </Head>
-                    <Text fontSize="4xl" fontWeight="semibold">
-                        {data.getPost.title}
-                    </Text>
-                    {data.getPost.body.length == 0 ? (
-                        <Text fontFamily="Lora" color="gray.500" fontSize="xl">
-                            No body
+        <>
+            <Navbar />
+            <Wrapper variant="medium">
+                {data && (
+                    <Box>
+                        <Head>
+                            <title>{data.getPost.title} • Spam</title>
+                            <Meta
+                                title={data.getPost.title}
+                                description={`${data.getPost.title} • Spam • Publish your thoughts to other peoples inbox`}
+                            />
+                        </Head>
+                        <Text fontSize="4xl" fontWeight="semibold">
+                            {data.getPost.title}
                         </Text>
-                    ) : (
+                        {data.getPost.body.length == 0 ? (
+                            <Text
+                                fontFamily="Lora"
+                                color="gray.500"
+                                fontSize="xl"
+                            >
+                                No body
+                            </Text>
+                        ) : (
+                            <Text
+                                fontFamily="Lora"
+                                fontSize="xl"
+                                className="post_body"
+                                color="#353434"
+                                dangerouslySetInnerHTML={{
+                                    __html: data.getPost.body,
+                                }}
+                            ></Text>
+                        )}
                         <Text
-                            fontFamily="Lora"
+                            my={10}
                             fontSize="xl"
-                            className="post_body"
-                            color="#353434"
+                            fontWeight="semibold"
+                            color="gray.500"
                             dangerouslySetInnerHTML={{
-                                __html: data.getPost.body,
+                                __html: generateReceiverList(
+                                    data.getPost.receivers
+                                ),
                             }}
                         ></Text>
-                    )}
-                    <Text
-                        my={10}
-                        fontSize="xl"
-                        fontWeight="semibold"
-                        color="gray.500"
-                        dangerouslySetInnerHTML={{
-                            __html: generateReceiverList(
-                                data.getPost.receivers
-                            ),
-                        }}
-                    ></Text>
-                </Box>
-            )}
-            {fetching && (
-                <Spinner
-                    position={"absolute"}
-                    top={"50%"}
-                    left={"50%"}
-                    color="gray.600"
-                />
-            )}
-        </Wrapper>
+                    </Box>
+                )}
+                {fetching && (
+                    <Spinner
+                        position={"absolute"}
+                        top={"50%"}
+                        left={"50%"}
+                        color="gray.600"
+                    />
+                )}
+            </Wrapper>
+        </>
     );
 };
 
