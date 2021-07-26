@@ -7,6 +7,8 @@
   },
   "dependencies": {
     "apollo-server-core": "^3.0.2",
+    "cheerio": "^1.0.0-rc.10",
+    "juice": "^8.0.0",
     "morgan": "^1.10.0",
     "react-device-detect": "^1.17.0"
   }

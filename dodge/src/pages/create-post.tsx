@@ -35,7 +35,7 @@ import Head from "next/head";
 import { Navbar } from "../components/Navbar";
 import { Meta } from "../components/Meta";
 import { parse } from "node-html-parser";
-import { addStyle } from "../utils/addStyles";
+import { addStyles } from "../utils/addStyles";
 
 const CreatePost: React.FC<{}> = ({}) => {
     const router = useRouter();
@@ -88,8 +88,13 @@ const CreatePost: React.FC<{}> = ({}) => {
                             // console.log("title : ", values.title);
                             // console.log("body : ", body);
                             // console.log("Recipients : ", emails);
-                            // setBody(addStyle(body));
-                            // console.log(body);
+                            const bodyWithStyles = addStyles(body);
+                            setBody(bodyWithStyles);
+                            console.log(body);
+                            if (body.trim().length == 0) {
+                                alert("The content body cannot be empty!");
+                                return;
+                            }
                             const { error } = await createPost({
                                 input: {
                                     title: values.title,
