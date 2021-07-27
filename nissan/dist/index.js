@@ -83,7 +83,7 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
         const key = constants_1.VERIFY_EMAIL + req.params.token;
         const userId = yield redis.get(key);
         if (!userId) {
-            return res.redirect("http://localhost:3000/wrong-token");
+            return res.redirect(`${process.env.WEBSITE_URL}/wrong-token`);
         }
         const userIdNum = parseInt(userId);
         const user = yield User_1.User.findOne(userIdNum);

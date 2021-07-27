@@ -84,7 +84,7 @@ const main = async () => {
         const userId = await redis.get(key);
 
         if (!userId) {
-            return res.redirect("http://localhost:3000/wrong-token");
+            return res.redirect(`${process.env.WEBSITE_URL}/wrong-token`);
             // this will page will show that the token is expired of corrupted
         }
         const userIdNum = parseInt(userId);
