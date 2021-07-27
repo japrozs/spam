@@ -5,13 +5,16 @@
 }
 
 .usage .use {
-    border: 1px solid lightgray;
     padding: 18px;
     background-color: #fff;
     border-radius: 0.4rem;
     margin: 0px 15px;
     opacity: 1;
     transition: all 0.2s ease;
+}
+
+.usage .use:hover {
+    background-color: #f3f3f3;
 }
 
 @media only screen and (max-width: 980px) {

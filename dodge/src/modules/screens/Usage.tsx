@@ -5,7 +5,7 @@ interface UsageProps {}
 
 export const Usage: React.FC<UsageProps> = ({}) => {
     return (
-        <Box py={"50px"} backgroundColor={"#f0f0f0"}>
+        <Box py={"50px"} backgroundColor={"#fff"}>
             <Flex className="usage" alignItems="center">
                 <Box className="use" width="100%" maxW="330px">
                     <Text fontSize="4xl" fontWeight="bold">
