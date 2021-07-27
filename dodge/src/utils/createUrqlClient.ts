@@ -94,6 +94,19 @@ export const createUrqlClient = (ssrExchange: any) => ({
                             );
                         });
                     },
+                    createGroup: (_result, args, cache, info) => {
+                        const allFields = cache.inspectFields("Query");
+                        const fieldInfos = allFields.filter(
+                            (info) => info.fieldName === "groups"
+                        );
+                        fieldInfos.forEach((fi) => {
+                            cache.invalidate(
+                                "Query",
+                                "groups",
+                                fi.arguments || {}
+                            );
+                        });
+                    },
                 },
             },
         }),

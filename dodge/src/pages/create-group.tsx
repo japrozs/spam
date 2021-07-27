@@ -59,7 +59,7 @@ const CreatePost: React.FC<{}> = ({}) => {
                             },
                         });
                         if (!error) {
-                            router.push("/");
+                            router.push("/main");
                         }
                     }}
                 >
