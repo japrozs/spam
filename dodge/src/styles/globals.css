@@ -30,46 +30,6 @@ a {
 }
 
 
-/* .rec_list,
-.group_list,
-.middle_list {
-    
+/* #nprogress .bar {
+    background: #000 !important;
 } */
-
-
-/* -------------- RESPONSIVE MEDIA QUERIES ------------------*/
-
-
-/* 
-@media only screen and (max-width: 1336px) {
-    .rec_list,
-    .group_list,
-    .middle_list {
-        background-color: red;
-    }
-} */
-
-@media only screen and (max-width: 1000px) {
-    .rec_list {
-        display: none;
-    }
-    .group_list {
-        width: 40vw !important;
-        margin-right: -100px !important;
-    }
-    .middle_list {
-        width: 58vw !important;
-    }
-}
-
-@media only screen and (max-width: 700px) {
-    .group_list {
-        display: none;
-    }
-    .middle_list {
-        width: 95vw !important;
-    }
-}
-
-
-/* -------------- END RESPONSIVE MEDIA QUERIES ------------------*/

@@ -1,0 +1,24 @@
+.pandp h1,
+.pandp h2,
+.pandp h3,
+.pandp h4,
+.pandp h5,
+.pandp h6 {
+    font-weight: 600;
+}
+
+.pandp h1 {
+    font-size: 40px;
+}
+
+.pandp h2 {
+    font-size: 28px;
+}
+
+.pandp h3 {
+    font-size: 20px;
+}
+
+.pandp p {
+    margin: 10px 0px;
+}
