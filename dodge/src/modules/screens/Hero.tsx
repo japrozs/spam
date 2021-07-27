@@ -17,7 +17,7 @@ export const Hero: React.FC<HeroProps> = ({}) => {
                         <span style={{ color: "#46C3DB" }}>inboxes</span>
                     </Text>
                     <Text fontWeight="medium" color="#323232" fontSize="xl">
-                        Save your favorite recipes in one place. Import just the
+                        Hi there !Save your favorite recipes in one place. Import just the
                         recipe from any website without the distractions or
                         clutter. Create meal plans, and generate grocery
                         lists—Saffron’s everything a cook needs.

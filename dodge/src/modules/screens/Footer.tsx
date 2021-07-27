@@ -2,6 +2,7 @@ import { Box, Flex, Text } from "@chakra-ui/react";
 import React from "react";
 import Image from "next/image";
 import logo from "../../../public/logo.png";
+import NextLink from 'next/link'
 
 interface FooterProps {}
 
@@ -15,6 +16,7 @@ export const Footer: React.FC<FooterProps> = ({}) => {
                 justifyContent="center"
                 alignItems="center"
             >
+                <NextLink href="/privacy-policy">
                 <Text
                     transition={"all 0.05s ease"}
                     cursor="pointer"
@@ -27,6 +29,8 @@ export const Footer: React.FC<FooterProps> = ({}) => {
                 >
                     PRIVACY POLICY
                 </Text>
+                </NextLink>
+                <NextLink href="/tandc">
                 <Text
                     transition={"all 0.05s ease"}
                     cursor="pointer"
@@ -39,6 +43,8 @@ export const Footer: React.FC<FooterProps> = ({}) => {
                 >
                     TERMS {"&"} CONDITIONS
                 </Text>
+                </NextLink>
+                <NextLink href="/contact">
                 <Text
                     transition={"all 0.05s ease"}
                     cursor="pointer"
@@ -51,6 +57,7 @@ export const Footer: React.FC<FooterProps> = ({}) => {
                 >
                     CONTACT
                 </Text>
+                </NextLink>
             </Flex>
             <Text mt={4} color="gray.600">
                 © 2021 Japroz Saini, LLC All Rights Reserved.

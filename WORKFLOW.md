@@ -1,29 +1,16 @@
 # Procedure to create new features on workflow
-
--   Firstly, create a new branch using the following command
-
+We use git flow to manage all the branches for easier integrationg with github.
+## To contribute
+Firstly, install `git-flow` and then run the following commands in your terminal on the `develop` branch only:
 ```bash
-git checkout -b <feature_name>
+git flow feature start <feature_name>
 ```
 
--   Then, code out the feature and push it through the following command
-
+After coding out the feature, use the following commands to publish the changes
 ```bash
 git add .
 git commit -m <commit_msg>
-git push -u origin <branch_name>
-```
-
--   Then go to `github.com` and `create a pull request`
-
-## Merge the changes into `prod`
-
-If the features is completed coded out, its time to deploy it! To deploy it, use the following commands
-
-```bash
-git pull origin develop
-git add .
+git flow feature finish <feature_name>
+git checkout develop
 git push
 ```
-
-## After this, the changes will be deployed to the hosting provider
