@@ -24,8 +24,6 @@ If the features is completed coded out, its time to deploy it! To deploy it, use
 git pull origin develop
 git add .
 git push
-git commit -m "update prod branch"
-git push
 ```
 
 ## After this, the changes will be deployed to the hosting provider
