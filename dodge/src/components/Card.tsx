@@ -42,6 +42,13 @@ export const Card: React.FC<CardProps> = ({
 }) => {
     const router = useRouter();
     const [, deletePost] = useDeletePostMutation();
+
+    const removeHTML = (str) => {
+        var tmp = document.createElement("DIV");
+        tmp.innerHTML = str;
+        return tmp.textContent || tmp.innerText || "";
+    };
+
     return (
         <Box
             borderRadius="0.2rem"
@@ -139,7 +146,10 @@ export const Card: React.FC<CardProps> = ({
                         router.push(`/p/${id}`);
                     }}
                 >
-                    {truncate(body.replace(/(<([^>]+)>)/gi, ""), 84)}
+                    {truncate(
+                        removeHTML(body.replace(/(<([^>]+)>)/gi, "")),
+                        84
+                    )}
                 </Text>
             )}
 
