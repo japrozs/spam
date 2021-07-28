@@ -48,6 +48,7 @@ export const IndexNav: React.FC<IndexNavProps> = ({}) => {
                     transition="color 0.2s ease"
                     cursor="pointer"
                     mr={5}
+                    className="contact"
                     fontWeight="semibold"
                     color="gray.500"
                     _hover={{
@@ -57,7 +58,12 @@ export const IndexNav: React.FC<IndexNavProps> = ({}) => {
                     Contact
                 </Text>
                 <NextLink href="/login">
-                    <Button variant="outline" color="#000" mr={5}>
+                    <Button
+                        className="signin"
+                        variant="outline"
+                        color="#000"
+                        mr={5}
+                    >
                         Sign In
                     </Button>
                 </NextLink>

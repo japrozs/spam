@@ -10,6 +10,7 @@ import "../styles/Usage.css";
 import "../styles/GetStarted.css";
 import "../styles/postStyles.css";
 import "../styles/text.css";
+import "../styles/Nav.css";
 
 const TopProgressBar = dynamic(
     () => {

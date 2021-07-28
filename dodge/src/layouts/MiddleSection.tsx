@@ -23,7 +23,7 @@ export const MiddleSection: React.FC<MainLayoutProps> = ({}) => {
                 mb={3}
                 mt={2}
                 width={"97%"}
-                placeholder="Find a group"
+                placeholder="Find a post"
             />
             {data &&
                 searchQuery.length == 0 &&

@@ -29,7 +29,13 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
         <Flex className="nav" p={2} mb={5} alignItems="center">
             {data && data.me != null && (
                 <>
-                    <Box ml={8} width="50px" height="50px" cursor="pointer">
+                    <Box
+                        ml={8}
+                        className="nav_icon"
+                        width="50px"
+                        height="50px"
+                        cursor="pointer"
+                    >
                         <Image
                             onClick={() => {
                                 router.push("/main");

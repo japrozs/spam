@@ -53,7 +53,7 @@ export const Card: React.FC<CardProps> = ({
         <Box
             borderRadius="0.2rem"
             border="1px solid #ADACAC"
-            width="47vw"
+            maxW={"600px"}
             mr={5}
             mb={5}
             className="card"
