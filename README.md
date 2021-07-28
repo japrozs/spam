@@ -1,9 +1,22 @@
 # Spam - a new way to publish your thoughts to other people inboxes
 
-![Screenshot](/assets/screenshot.png)
+# Pass
+
+Pass is an app that helps you find something to do when you're feeling bored. Just create an account, find an event and join millions of other people like you.
+
+# Folder structure
+
+| Folder               | Description                                |
+| -------------------- | ------------------------------------------ |
+| [`dodge`](dodge)     | The web app built with `next.js`           |
+| [`nissan`](nissan)   | The `graphQL` server built with `express`  |
+| [`.github`](.github) | Github settings config. (eg. `CODEOWNERS`) |
+| [`.vscode`](.vscode) | Project settings for `VSCode`              |
 
 ## How to start the app
+
 To run the app, follow the steps given below:
+
 ```bash
 git clone https://github.com/japrozs/spam.git
 cd spam
