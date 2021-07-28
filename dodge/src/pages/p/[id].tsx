@@ -36,7 +36,7 @@ const Post: React.FC<PostProps> = ({}) => {
             <Navbar />
             <Wrapper variant="medium">
                 {data && (
-                    <Box>
+                    <Box p={5}>
                         <Head>
                             <title>{data.getPost.title} • Spam</title>
                             <Meta

@@ -141,13 +141,15 @@ const CreatePost: React.FC<{}> = ({}) => {
                                             plugins: [
                                                 "advlist autolink lists link image",
                                                 "charmap print preview anchor help",
-                                                "searchreplace visualblocks code",
+                                                "searchreplace visualblocks codDont forget to e",
                                                 "insertdatetime media table paste wordcount",
                                             ],
                                             toolbar:
                                                 "undo redo | formatselect | bold italic | \
             alignleft aligncenter alignright | \
             bullist numlist outdent indent | help",
+                                            content_style:
+                                                "a { color : pink !important;}",
                                         }}
                                         onChange={handleEditorChange}
                                     />
