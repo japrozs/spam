@@ -17,10 +17,11 @@ export const Hero: React.FC<HeroProps> = ({}) => {
                         <span style={{ color: "#46C3DB" }}>inboxes</span>
                     </Text>
                     <Text fontWeight="medium" color="#323232" fontSize="xl">
-                        Hi there, Save your favorite recipes in one place.
-                        Import just the recipe from any website without the
-                        distractions or clutter. Create meal plans, and generate
-                        grocery lists—Saffron’s everything a cook needs.
+                        Ever wanted to create content for your large userbase
+                        but couldn{"'"}t find the software or the platform was
+                        too confusing? Fear not, Spam is here for you. With a
+                        easy-to-use interface and many features, you cam get
+                        started in minutes.
                     </Text>
                     <Button
                         my={5}

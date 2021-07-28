@@ -17,6 +17,12 @@
     background-color: #f3f3f3;
 }
 
+.use_divider {
+    display: none !important;
+    width: 60vw !important;
+    border-color: gray !important;
+}
+
 @media only screen and (max-width: 980px) {
     .usage {
         flex-wrap: wrap;
@@ -25,5 +31,8 @@
         padding: 20px;
         width: 90%;
         margin: 30px 10px;
+    }
+    .use_divider {
+        display: block !important;
     }
 }

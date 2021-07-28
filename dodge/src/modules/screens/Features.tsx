@@ -15,34 +15,35 @@ export const Features: React.FC<FeaturesProps> = ({}) => {
                 <div className="text">
                     <Box>
                         <Text fontWeight="semibold" fontSize="3xl">
-                            Make recipes your own
+                            Rich text editor
                         </Text>
                         <Text>
-                            With Saffron’s recipe editor, you can easily edit
-                            recipes, save adjustments to ingredients, and add
-                            additional steps or tips to your preparation.
+                            With Spam{"'"}s rich text editor, you can easily
+                            create posts, add images, and add your own
+                            customized subscription links to your content
+                            easily.
                         </Text>
-                        <Divider className="divider" py={1.5} width={"40%"} />
+                        <Divider className="divider" py={2} width={"40%"} />
                     </Box>
                     <Box>
                         <Text fontWeight="semibold" fontSize="3xl">
                             All in one place
                         </Text>
                         <Text>
-                            Storing your recipes in Saffron allows you to
-                            quickly search, find, and select what you want to
-                            cook.
+                            Storing all your written content in Spam allows you
+                            to quickly search, find, and select what you want to
+                            post.
                         </Text>
-                        <Divider className="divider" py={1.5} width={"40%"} />
+                        <Divider className="divider" py={2} width={"40%"} />
                     </Box>
                     <Box>
                         <Text fontWeight="semibold" fontSize="3xl">
-                            Cook from your favorite device
+                            Access from your favorite device
                         </Text>
                         <Text>
-                            Saffron stores your recipes in the Cloud so you can
-                            access them on any device through our website or
-                            Android/iOS app.
+                            Spam stores all your posts in the Cloud yo you can
+                            access them on any device throigh the website or the
+                            iOS/Android app.
                         </Text>
                     </Box>
                 </div>
