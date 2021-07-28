@@ -42,7 +42,7 @@ const CreatePost: React.FC<{}> = ({}) => {
     useIsAuth();
     const [, createPost] = useCreatePostMutation();
     const [{ data, fetching }] = useGetGroupsQuery();
-    const [body, setBody] = useState("");
+    const [body, setBody] = useState("<p>Once upon a time ...</p>");
     const [group, setGroup] = useState("");
 
     console.log();

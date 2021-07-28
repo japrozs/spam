@@ -47,7 +47,7 @@ export const MiddleSection: React.FC<MainLayoutProps> = ({}) => {
             )}
             {data && data.getPosts.length == 0 && (
                 <Text color="gray.500" fontWeight="medium">
-                    You don{"'"}t have any posts
+                    You don{"'"}t have any posts. Create a post to get started.
                 </Text>
             )}
             {data &&

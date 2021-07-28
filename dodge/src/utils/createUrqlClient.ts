@@ -41,6 +41,8 @@ export const createUrqlClient = (ssrExchange: any) => ({
             updates: {
                 Mutation: {
                     logout: (_result, args, cache, info) => {
+                        cache.invalidate("Query", "getPosts");
+                        cache.invalidate("Query", "getGroups");
                         betterUpdateQuery<LogoutMutation, MeQuery>(
                             cache,
                             { query: MeDocument },
@@ -84,12 +86,12 @@ export const createUrqlClient = (ssrExchange: any) => ({
                     createPost: (_result, args, cache, info) => {
                         const allFields = cache.inspectFields("Query");
                         const fieldInfos = allFields.filter(
-                            (info) => info.fieldName === "posts"
+                            (info) => info.fieldName === "getPosts"
                         );
                         fieldInfos.forEach((fi) => {
                             cache.invalidate(
                                 "Query",
-                                "posts",
+                                "getPosts",
                                 fi.arguments || {}
                             );
                         });
@@ -97,12 +99,12 @@ export const createUrqlClient = (ssrExchange: any) => ({
                     createGroup: (_result, args, cache, info) => {
                         const allFields = cache.inspectFields("Query");
                         const fieldInfos = allFields.filter(
-                            (info) => info.fieldName === "groups"
+                            (info) => info.fieldName === "getGroups"
                         );
                         fieldInfos.forEach((fi) => {
                             cache.invalidate(
                                 "Query",
-                                "groups",
+                                "getGroups",
                                 fi.arguments || {}
                             );
                         });

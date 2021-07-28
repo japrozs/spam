@@ -7,6 +7,7 @@ import { Features } from "../screens/Features";
 import { Usage } from "../screens/Usage";
 import { GetStarted } from "../screens/GetStarted";
 import { Footer } from "../screens/Footer";
+import { Banner } from "src/components/Banner";
 
 interface LandingProps {}
 
@@ -19,6 +20,7 @@ export const Landing: React.FC<LandingProps> = ({}) => {
                 </title>
                 <Meta title="Spam • Publish your thoughts to other peoples inbox" />
             </Head>
+            <Banner />
             <Navbar />
             <Hero />
             <Features />

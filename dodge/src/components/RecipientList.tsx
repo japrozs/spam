@@ -39,8 +39,12 @@ export const RecipientList: React.FC<RecipientListProps> = ({}) => {
                         <Text
                             key={a.id}
                             color="gray.600"
+                            py={1}
+                            px={2}
+                            borderRadius={"0.4rem"}
                             _hover={{
                                 color: "gray.800",
+                                backgroundColor: "#F8F4F0",
                             }}
                             fontWeight="medium"
                         >
