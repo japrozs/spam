@@ -55,7 +55,7 @@ const main = async () => {
                 httpOnly: true,
                 sameSite: "lax",
                 secure: __prod__, // cookie only works in https (turn this off if not using https in production)
-                domain: __prod__ ? ".codeponder.com" : undefined,
+                domain: __prod__ ? ".japrozsaini.me" : undefined,
             },
             saveUninitialized: false,
             secret: process.env.SESSION_SECRET,
