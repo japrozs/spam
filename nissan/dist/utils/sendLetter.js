@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.sendLetter = void 0;
 const nodemailer_1 = __importDefault(require("nodemailer"));
-exports.sendLetter = (email, body, title) => __awaiter(void 0, void 0, void 0, function* () {
+const sendLetter = (email, body, title) => __awaiter(void 0, void 0, void 0, function* () {
     let transporter = nodemailer_1.default.createTransport({
         host: "smtp.gmail.com",
         port: 587,
@@ -35,4 +35,5 @@ exports.sendLetter = (email, body, title) => __awaiter(void 0, void 0, void 0, f
     console.log("Message sent: %s", info.messageId);
     console.log("Preview URL: %s", nodemailer_1.default.getTestMessageUrl(info));
 });
+exports.sendLetter = sendLetter;
 //# sourceMappingURL=sendLetter.js.map

@@ -13,7 +13,6 @@ import { UserResolver } from "./resolvers/user";
 import { PostResolver } from "./resolvers/post";
 import { buildSchema } from "type-graphql";
 import { User } from "./entities/User";
-import morgan from "morgan";
 import { Post } from "./entities/Post";
 import { Group } from "./entities/Group";
 import { GroupResolver } from "./resolvers/group";
@@ -22,22 +21,20 @@ const main = async () => {
     const conn = await createConnection({
         type: "postgres",
         database: "spam",
-        username: "postgres",
-        password: "postgres",
+        url: process.env.DATABASE_URL,
         entities: [User, Post, Group],
         migrations: [path.join(__dirname, "./migrations/*")],
-        synchronize: true,
+        synchronize: !__prod__,
         logging: true,
     });
     conn.runMigrations();
     const app = express();
-    app.use(morgan("dev"));
     // connect redis to our session
     // to store session variables in redis
     const RedisStore = connectRedis(session);
     // initialise a new redis cache
-    const redis = new Redis();
-
+    const redis = new Redis(process.env.REDIS_URL);
+    app.set("trust proxy", 1);
     app.use(
         cors({
             origin: process.env.WEBSITE_URL,
@@ -58,9 +55,10 @@ const main = async () => {
                 httpOnly: true,
                 sameSite: "lax",
                 secure: __prod__, // cookie only works in https (turn this off if not using https in production)
+                domain: __prod__ ? ".codeponder.com" : undefined,
             },
             saveUninitialized: false,
-            secret: "uixerw7923sh28y235sm19s934dh3785sh",
+            secret: process.env.SESSION_SECRET,
             resave: false,
         })
     );
@@ -112,7 +110,7 @@ const main = async () => {
     });
     //* END CONFIRM EMAIL PATH
 
-    app.listen(4000, () => {
+    app.listen(parseInt(process.env.PORT), () => {
         console.log(`🚀 Server started on ${process.env.SERVER_URL}`);
     });
 };

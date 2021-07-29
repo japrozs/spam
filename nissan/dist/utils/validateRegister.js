@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.validateRegister = void 0;
-exports.validateRegister = (options) => {
+const validateRegister = (options) => {
     if (!options.email.includes("@") || !options.email.includes(".")) {
         return [
             {
@@ -20,4 +20,5 @@ exports.validateRegister = (options) => {
     }
     return null;
 };
+exports.validateRegister = validateRegister;
 //# sourceMappingURL=validateRegister.js.map

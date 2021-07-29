@@ -92,7 +92,8 @@ __decorate([
 ], PostResolver.prototype, "createPost", null);
 __decorate([
     type_graphql_1.Query(() => Post_1.Post),
-    __param(0, type_graphql_1.Arg("id", () => type_graphql_1.Int)), __param(1, type_graphql_1.Ctx()),
+    __param(0, type_graphql_1.Arg("id", () => type_graphql_1.Int)),
+    __param(1, type_graphql_1.Ctx()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, Object]),
     __metadata("design:returntype", void 0)

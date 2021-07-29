@@ -68,14 +68,16 @@ __decorate([
 ], GroupResolver.prototype, "getGroups", null);
 __decorate([
     type_graphql_1.Mutation(() => Group_1.Group),
-    __param(0, type_graphql_1.Arg("input")), __param(1, type_graphql_1.Ctx()),
+    __param(0, type_graphql_1.Arg("input")),
+    __param(1, type_graphql_1.Ctx()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [GroupInput, Object]),
     __metadata("design:returntype", void 0)
 ], GroupResolver.prototype, "createGroup", null);
 __decorate([
     type_graphql_1.Query(() => Group_1.Group),
-    __param(0, type_graphql_1.Arg("id", () => type_graphql_1.Int)), __param(1, type_graphql_1.Ctx()),
+    __param(0, type_graphql_1.Arg("id", () => type_graphql_1.Int)),
+    __param(1, type_graphql_1.Ctx()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, Object]),
     __metadata("design:returntype", void 0)

@@ -27,7 +27,6 @@ const user_1 = require("./resolvers/user");
 const post_1 = require("./resolvers/post");
 const type_graphql_1 = require("type-graphql");
 const User_1 = require("./entities/User");
-const morgan_1 = __importDefault(require("morgan"));
 const Post_1 = require("./entities/Post");
 const Group_1 = require("./entities/Group");
 const group_1 = require("./resolvers/group");
@@ -35,18 +34,17 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
     const conn = yield typeorm_1.createConnection({
         type: "postgres",
         database: "spam",
-        username: "postgres",
-        password: "postgres",
+        url: process.env.DATABASE_URL,
         entities: [User_1.User, Post_1.Post, Group_1.Group],
         migrations: [path_1.default.join(__dirname, "./migrations/*")],
-        synchronize: true,
+        synchronize: !constants_1.__prod__,
         logging: true,
     });
     conn.runMigrations();
     const app = express_1.default();
-    app.use(morgan_1.default("dev"));
     const RedisStore = connect_redis_1.default(express_session_1.default);
-    const redis = new ioredis_1.default();
+    const redis = new ioredis_1.default(process.env.REDIS_URL);
+    app.set("trust proxy", 1);
     app.use(cors_1.default({
         origin: process.env.WEBSITE_URL,
         credentials: true,
@@ -62,9 +60,10 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
             httpOnly: true,
             sameSite: "lax",
             secure: constants_1.__prod__,
+            domain: constants_1.__prod__ ? ".codeponder.com" : undefined,
         },
         saveUninitialized: false,
-        secret: "uixerw7923sh28y235sm19s934dh3785sh",
+        secret: process.env.SESSION_SECRET,
         resave: false,
     }));
     const apolloServer = new apollo_server_express_1.ApolloServer({
@@ -103,7 +102,7 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
         yield redis.del(key);
         return res.redirect(`${process.env.WEBSITE_URL}/login`);
     }));
-    app.listen(4000, () => {
+    app.listen(parseInt(process.env.PORT), () => {
         console.log(`🚀 Server started on ${process.env.SERVER_URL}`);
     });
 });
