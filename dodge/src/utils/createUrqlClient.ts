@@ -30,90 +30,93 @@ export const errorExchange: Exchange =
         );
     };
 
-export const createUrqlClient = (ssrExchange: any) => ({
-    url: `${process.env.NEXT_PUBLIC_SERVER_URL}/graphql`,
-    fetchOptions: {
-        credentials: "include" as const,
-    },
-    exchanges: [
-        dedupExchange,
-        cacheExchange({
-            updates: {
-                Mutation: {
-                    logout: (_result, args, cache, info) => {
-                        cache.invalidate("Query", "getPosts");
-                        cache.invalidate("Query", "getGroups");
-                        betterUpdateQuery<LogoutMutation, MeQuery>(
-                            cache,
-                            { query: MeDocument },
-                            _result,
-                            () => ({ me: null })
-                        );
-                    },
-                    login: (_result, args, cache, info) => {
-                        betterUpdateQuery<LoginMutation, MeQuery>(
-                            cache,
-                            { query: MeDocument },
-                            _result,
-                            (result, query) => {
-                                if (result.login.errors) {
-                                    return query;
-                                } else {
-                                    return {
-                                        me: result.login.user,
-                                    };
+export const createUrqlClient = (ssrExchange: any) => {
+    console.log("api url : " + process.env.NEXT_PUBLIC_GRAPHQL_URL);
+    return {
+        url: process.env.NEXT_PUBLIC_GRAPHQL_URL as string,
+        fetchOptions: {
+            credentials: "include" as const,
+        },
+        exchanges: [
+            dedupExchange,
+            cacheExchange({
+                updates: {
+                    Mutation: {
+                        logout: (_result, args, cache, info) => {
+                            cache.invalidate("Query", "getPosts");
+                            cache.invalidate("Query", "getGroups");
+                            betterUpdateQuery<LogoutMutation, MeQuery>(
+                                cache,
+                                { query: MeDocument },
+                                _result,
+                                () => ({ me: null })
+                            );
+                        },
+                        login: (_result, args, cache, info) => {
+                            betterUpdateQuery<LoginMutation, MeQuery>(
+                                cache,
+                                { query: MeDocument },
+                                _result,
+                                (result, query) => {
+                                    if (result.login.errors) {
+                                        return query;
+                                    } else {
+                                        return {
+                                            me: result.login.user,
+                                        };
+                                    }
                                 }
-                            }
-                        );
-                    },
+                            );
+                        },
 
-                    register: (_result, args, cache, info) => {
-                        betterUpdateQuery<RegisterMutation, MeQuery>(
-                            cache,
-                            { query: MeDocument },
-                            _result,
-                            (result, query) => {
-                                if (result.register.errors) {
-                                    return query;
-                                } else {
-                                    return {
-                                        me: result.register.user,
-                                    };
+                        register: (_result, args, cache, info) => {
+                            betterUpdateQuery<RegisterMutation, MeQuery>(
+                                cache,
+                                { query: MeDocument },
+                                _result,
+                                (result, query) => {
+                                    if (result.register.errors) {
+                                        return query;
+                                    } else {
+                                        return {
+                                            me: result.register.user,
+                                        };
+                                    }
                                 }
-                            }
-                        );
-                    },
-                    createPost: (_result, args, cache, info) => {
-                        const allFields = cache.inspectFields("Query");
-                        const fieldInfos = allFields.filter(
-                            (info) => info.fieldName === "getPosts"
-                        );
-                        fieldInfos.forEach((fi) => {
-                            cache.invalidate(
-                                "Query",
-                                "getPosts",
-                                fi.arguments || {}
                             );
-                        });
-                    },
-                    createGroup: (_result, args, cache, info) => {
-                        const allFields = cache.inspectFields("Query");
-                        const fieldInfos = allFields.filter(
-                            (info) => info.fieldName === "getGroups"
-                        );
-                        fieldInfos.forEach((fi) => {
-                            cache.invalidate(
-                                "Query",
-                                "getGroups",
-                                fi.arguments || {}
+                        },
+                        createPost: (_result, args, cache, info) => {
+                            const allFields = cache.inspectFields("Query");
+                            const fieldInfos = allFields.filter(
+                                (info) => info.fieldName === "getPosts"
                             );
-                        });
+                            fieldInfos.forEach((fi) => {
+                                cache.invalidate(
+                                    "Query",
+                                    "getPosts",
+                                    fi.arguments || {}
+                                );
+                            });
+                        },
+                        createGroup: (_result, args, cache, info) => {
+                            const allFields = cache.inspectFields("Query");
+                            const fieldInfos = allFields.filter(
+                                (info) => info.fieldName === "getGroups"
+                            );
+                            fieldInfos.forEach((fi) => {
+                                cache.invalidate(
+                                    "Query",
+                                    "getGroups",
+                                    fi.arguments || {}
+                                );
+                            });
+                        },
                     },
                 },
-            },
-        }),
-        errorExchange,
-        ssrExchange,
-        fetchExchange,
-    ],
-});
+            }),
+            errorExchange,
+            ssrExchange,
+            fetchExchange,
+        ],
+    };
+};

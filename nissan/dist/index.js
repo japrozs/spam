@@ -37,7 +37,7 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
         url: process.env.DATABASE_URL,
         entities: [User_1.User, Post_1.Post, Group_1.Group],
         migrations: [path_1.default.join(__dirname, "./migrations/*")],
-        synchronize: !constants_1.__prod__,
+        synchronize: true,
         logging: true,
     });
     conn.runMigrations();

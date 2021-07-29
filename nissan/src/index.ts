@@ -24,7 +24,7 @@ const main = async () => {
         url: process.env.DATABASE_URL,
         entities: [User, Post, Group],
         migrations: [path.join(__dirname, "./migrations/*")],
-        synchronize: !__prod__,
+        synchronize: true,
         logging: true,
     });
     conn.runMigrations();
