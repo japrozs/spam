@@ -13,7 +13,7 @@ export const Hero: React.FC<HeroProps> = ({}) => {
                     <Text className="intro" fontWeight="bold" fontSize="5xl">
                         Post your{" "}
                         <span style={{ color: "#46C3DB" }}>thoughts</span> to
-                        peoples{" "}
+                        people{"'"}s{" "}
                         <span style={{ color: "#46C3DB" }}>inboxes</span>
                     </Text>
                     <Text fontWeight="medium" color="#323232" fontSize="xl">
