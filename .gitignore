@@ -4,3 +4,4 @@ node_modules
 */.env.production
 root.pub
 root
+.DS_Store
