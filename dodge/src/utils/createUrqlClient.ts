@@ -31,7 +31,6 @@ export const errorExchange: Exchange =
     };
 
 export const createUrqlClient = (ssrExchange: any) => {
-    console.log("api url : " + process.env.NEXT_PUBLIC_GRAPHQL_URL);
     return {
         url: process.env.NEXT_PUBLIC_GRAPHQL_URL as string,
         fetchOptions: {

@@ -38,7 +38,7 @@ const Login: React.FC<{}> = ({}) => {
                 initialValues={{ email: "", password: "" }}
                 onSubmit={async (values, { setErrors }) => {
                     const response = await login(values);
-                    console.log(response);
+
                     if (response.error?.message.includes("User not found")) {
                         setErrors({
                             email: "That user doesn't exist",
