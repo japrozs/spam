@@ -19,8 +19,8 @@ export const Banner: React.FC<BannerProps> = ({}) => {
                 >
                     <Text textAlign="center" mx={"auto"}>
                         {" "}
-                        👋 &nbsp;Sign up now to get unlimited newsletters for
-                        free!
+                        👋 &nbsp;&nbsp;Sign up now to get unlimited newsletters
+                        for free!
                     </Text>
                     <CloseIcon
                         onClick={() => setOpen(!open)}

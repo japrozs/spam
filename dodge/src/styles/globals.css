@@ -1,3 +1,11 @@
+@font-face {
+    font-family: "Nicholas";
+    src: url("../../fonts/Nicholas/Nicholas_Bold.ttf");
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+}
+
 html,
 body {
     padding: 0;

@@ -24,8 +24,6 @@ const Register: React.FC<RegisterProps> = ({}) => {
             <NextLink href="/">
                 <Text
                     py={2}
-                    position="sticky"
-                    top="0"
                     backgroundColor="white"
                     cursor="pointer"
                     color="gray.700"

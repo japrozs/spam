@@ -30,7 +30,7 @@ const main = async () => {
     conn.runMigrations();
     const app = express();
     // connect redis to our session
-    // to store session variables in redis
+    // to store session variables in redis cache 
     const RedisStore = connectRedis(session);
     // initialise a new redis cache
     const redis = new Redis(process.env.REDIS_URL);

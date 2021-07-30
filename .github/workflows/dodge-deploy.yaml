@@ -3,13 +3,13 @@ name: Deploy dodge to Vercel
 on:
     push:
         paths:
-            - "dodge"
+            - "dodge/**"
         branches:
             - "develop"
 
 jobs:
     build:
-        name: Deploy
+        name: Deploy web
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
