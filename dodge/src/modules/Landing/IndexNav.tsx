@@ -49,8 +49,8 @@ export const IndexNav: React.FC<IndexNavProps> = ({}) => {
                         transition="color 0.2s ease"
                         cursor="pointer"
                         mr={5}
-                        px={2}
-                        py={1}
+                        px={3}
+                        py={2}
                         className="contact"
                         fontWeight="semibold"
                         borderRadius={"0.4rem"}
