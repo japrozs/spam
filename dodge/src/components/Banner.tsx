@@ -29,7 +29,7 @@ export const Banner: React.FC<BannerProps> = ({}) => {
                         top={3}
                         right={2}
                         cursor="pointer"
-                        fontSize="md"
+                        fontSize="small"
                         ml={"auto"}
                         mr={"10px"}
                     />
