@@ -6,12 +6,13 @@ Pass is an app that helps you find something to do when you're feeling bored. Ju
 
 # Folder structure
 
-| Folder             | Description                                |
-| ------------------ | ------------------------------------------ |
-| [dodge](dodge)     | The web app built with `next.js`           |
-| [nissan](nissan)   | The `graphQL` server built with `express`  |
-| [.github](.github) | Github settings config. (eg. `CODEOWNERS`) |
-| [.vscode](.vscode) | Project settings for `VSCode`              |
+| Folder             | Description                                     |
+| ------------------ | ----------------------------------------------- |
+| [dodge](dodge)     | The web app built with `next.js`                |
+| [nissan](nissan)   | The `graphQL` server built with `express`       |
+| [scripts](scripts) | Scripts regarding deployment and docker config. |
+| [.github](.github) | Github settings config. (eg. `CODEOWNERS`)      |
+| [.vscode](.vscode) | Project settings for `VSCode`                   |
 
 ## How to start the app
 
