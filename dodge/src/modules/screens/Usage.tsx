@@ -10,7 +10,7 @@ interface UsageProps {}
 export const Usage: React.FC<UsageProps> = ({}) => {
     return (
         <Box py={"50px"} backgroundColor={"#fff"}>
-            <Flex className="usage" alignItems="start">
+            <Flex className="usage" alignItems="stretch">
                 <Box
                     textAlign="center"
                     className="use"
