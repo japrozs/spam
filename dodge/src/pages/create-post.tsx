@@ -155,13 +155,6 @@ const CreatePost: React.FC<{}> = ({}) => {
                                     />
                                 </Box>
                                 <Box mt={4}>
-                                    <Text
-                                        fontSize="xl"
-                                        mb={2}
-                                        fontWeight="semibold"
-                                    >
-                                        Recipients
-                                    </Text>
                                     {data.getGroups.length != 0 && (
                                         <Select
                                             name="group"
@@ -184,13 +177,22 @@ const CreatePost: React.FC<{}> = ({}) => {
                                         </Select>
                                     )}
                                     {data.getGroups.length == 0 && (
-                                        <Box mt={4}>
-                                            <EditorField
-                                                name="receivers"
-                                                placeholder="johndoe@gmail.com, janedo@gmail.com, abc@gmail.com"
-                                                label="Receivers (seperated by commas)"
-                                            />
-                                        </Box>
+                                        <>
+                                            <Text
+                                                fontSize="xl"
+                                                mb={2}
+                                                fontWeight="semibold"
+                                            >
+                                                Recipients
+                                            </Text>
+                                            <Box mt={4}>
+                                                <EditorField
+                                                    name="receivers"
+                                                    placeholder="johndoe@gmail.com, janedo@gmail.com, abc@gmail.com"
+                                                    label="Receivers (seperated by commas)"
+                                                />
+                                            </Box>
+                                        </>
                                     )}
                                 </Box>
                                 <Divider my={2} />

@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import screenshot from "../../../public/screenshot.png";
+import editor from "../../../public/editor.png";
 import { Box, Divider, Flex, Text } from "@chakra-ui/react";
 
 interface FeaturesProps {}
@@ -10,7 +10,7 @@ export const Features: React.FC<FeaturesProps> = ({}) => {
         <Box>
             <Flex className="features" alignItems="center">
                 <div className="img">
-                    <Image src={screenshot} alt="Image" />
+                    <Image src={editor} alt="Image" />
                 </div>
                 <div className="text">
                     <Box>
