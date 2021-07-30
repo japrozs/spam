@@ -8,12 +8,17 @@ on:
             - "develop"
 
 jobs:
-    build:
-        name: Deploy web
+    vercel:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
             - uses: actions/setup-node@v1
               with:
                   node-version: 12
-            - run: cd dodge && vercel --prod
+            - name: "Deploy web to Vercel"
+              run: |
+                  npx vercel --token ${VERCEL_TOKEN} --prod
+              env:
+                  VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+                  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+                  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
