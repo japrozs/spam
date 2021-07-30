@@ -1,4 +1,4 @@
-name: Deploy dodge to Vercel
+name: Build & Deploy dodge
 
 on:
     push:
@@ -8,6 +8,14 @@ on:
             - "develop"
 
 jobs:
+    web:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - uses: actions/setup-node@v1
+              with:
+                  node-version: 12
+            - run: cd dodge && yarn add -D typescript && yarn install && yarn lint
     vercel:
         runs-on: ubuntu-latest
         steps:
