@@ -25,7 +25,10 @@ export const Hero: React.FC<HeroProps> = ({}) => {
                     </Text>
                     <Button
                         my={5}
+                        p={4}
+                        py={5}
                         color="#fff"
+                        fontSize="large"
                         _hover={{
                             backgroundColor: "rgb(28, 28, 28)",
                         }}
