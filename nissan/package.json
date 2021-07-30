@@ -29,6 +29,7 @@
         "typescript": "^4.3.5"
     },
     "dependencies": {
+        "@spam/common": "^1.0.0",
         "@types/connect-redis": "^0.0.17",
         "@types/express-session": "^1.17.4",
         "@types/ioredis": "^4.26.6",

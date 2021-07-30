@@ -20,7 +20,6 @@ interface mainProps {}
 const Main: React.FC<mainProps> = ({}) => {
     useIsAuth();
     const [{ data: d, fetching: f }] = useGetGroupsQuery();
-
     return (
         <Box>
             <Head>
