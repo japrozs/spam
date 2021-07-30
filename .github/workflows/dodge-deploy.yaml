@@ -25,7 +25,7 @@ jobs:
                   node-version: 12
             - name: "Deploy web to Vercel"
               run: |
-                  npx vercel --token ${VERCEL_TOKEN} --prod
+                  cd dodge && npx vercel --token ${VERCEL_TOKEN} --prod
               env:
                   VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
                   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
