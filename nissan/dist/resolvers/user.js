@@ -189,7 +189,7 @@ let UserResolver = class UserResolver {
                     errors: [
                         {
                             field: "email",
-                            message: "Please confirm your email to login",
+                            message: "Please verify your email to login",
                         },
                     ],
                 };
