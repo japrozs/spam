@@ -26,9 +26,24 @@ export const GroupList: React.FC<GroupListProps> = ({}) => {
                     Your Groups
                 </Text>
                 <NextLink href="/create-group">
-                    <Button ml={"auto"} mr={2}>
+                    <Text
+                        border="1px solid #F8F4F0"
+                        transition="all 0.1s ease-in-out"
+                        cursor="pointer"
+                        mr={2}
+                        px={4}
+                        py={1}
+                        className="contact"
+                        fontWeight="semibold"
+                        borderRadius={"0.4rem"}
+                        color="#000"
+                        _hover={{
+                            backgroundColor: "#F8F4F0",
+                        }}
+                        ml={"auto"}
+                    >
                         New
-                    </Button>
+                    </Text>
                 </NextLink>
             </Flex>
             <Divider my={2} />

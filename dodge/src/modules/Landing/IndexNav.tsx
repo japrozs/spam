@@ -64,14 +64,22 @@ export const IndexNav: React.FC<IndexNavProps> = ({}) => {
                     </Text>
                 </NextLink>
                 <NextLink href="/login">
-                    <Button
-                        className="signin"
-                        variant="outline"
-                        color="#000"
+                    <Text
+                        transition="color 0.2s ease"
+                        cursor="pointer"
                         mr={5}
+                        px={4}
+                        py={2}
+                        className="contact"
+                        fontWeight="semibold"
+                        borderRadius={"0.4rem"}
+                        color="#000"
+                        _hover={{
+                            backgroundColor: "#F8F4F0",
+                        }}
                     >
                         Sign In
-                    </Button>
+                    </Text>
                 </NextLink>
                 <NextLink href="/register">
                     <Button

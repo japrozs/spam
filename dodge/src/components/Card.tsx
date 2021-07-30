@@ -61,7 +61,7 @@ export const Card: React.FC<CardProps> = ({
             p={5}
             backgroundColor="#fff"
             _hover={{
-                backgroundColor: "rgb(247, 247, 247)",
+                backgroundColor: "#F8F4F0",
             }}
         >
             <Flex alignItems="center">

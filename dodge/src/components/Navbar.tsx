@@ -49,10 +49,18 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
                             <Menu>
                                 {/* <AddIcon /> */}
                                 <MenuButton
-                                    backgroundColor="white"
-                                    as={Button}
-                                    variant="solid"
-                                    border="1px solid lightgray"
+                                    transition="color 0.2s ease-in"
+                                    cursor="pointer"
+                                    mr={2}
+                                    px={4}
+                                    py={2}
+                                    className="contact"
+                                    fontWeight="semibold"
+                                    borderRadius={"0.4rem"}
+                                    color="#000"
+                                    _hover={{
+                                        backgroundColor: "#F8F4F0",
+                                    }}
                                 >
                                     <AddIcon />
                                 </MenuButton>
@@ -75,6 +83,9 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
                                 <MenuButton
                                     backgroundColor="white"
                                     variant="solid"
+                                    _hover={{
+                                        backgroundColor: "#F8F4F0",
+                                    }}
                                     border="1px solid lightgray"
                                     as={Button}
                                     rightIcon={<ChevronDownIcon />}
