@@ -19,9 +19,9 @@ export const Hero: React.FC<HeroProps> = ({}) => {
                     <Text fontWeight="medium" color="#323232" fontSize="xl">
                         Ever wanted to create content for your large userbase
                         but couldn{"'"}t find the software or the platform was
-                        too confusing? Fear not, Spam is here for you. With a
-                        easy-to-use interface and many features, you cam get
-                        started in minutes.
+                        too confusing? Fear not, Spam is here for you. With an
+                        easy-to-use interface and many features, you can get
+                        started creating content on Spam in minutes.
                     </Text>
                     <Button
                         my={5}

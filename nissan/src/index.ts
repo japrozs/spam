@@ -54,7 +54,7 @@ const main = async () => {
                 maxAge: 1000 * 60 * 60 * 24 * 365 * 10, // 10 years
                 httpOnly: true,
                 sameSite: "lax",
-                secure: __prod__, // cookie only works in https (turn this off if not using https in production)
+                secure: false, // cookie only works in https (turn this off if not using https in production)
                 domain: __prod__ ? ".japrozsaini.me" : undefined,
             },
             saveUninitialized: false,

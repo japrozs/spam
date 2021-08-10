@@ -116,7 +116,6 @@ export const Card: React.FC<CardProps> = ({
                                     deletePost({
                                         id,
                                     });
-                                    Router.reload();
                                 }}
                             >
                                 Delete

@@ -59,7 +59,7 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
             maxAge: 1000 * 60 * 60 * 24 * 365 * 10,
             httpOnly: true,
             sameSite: "lax",
-            secure: constants_1.__prod__,
+            secure: false,
             domain: constants_1.__prod__ ? ".japrozsaini.me" : undefined,
         },
         saveUninitialized: false,

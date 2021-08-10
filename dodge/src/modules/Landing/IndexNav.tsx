@@ -54,7 +54,6 @@ export const IndexNav: React.FC<IndexNavProps> = ({}) => {
                         className="contact"
                         fontWeight="semibold"
                         borderRadius={"0.4rem"}
-                        color="gray.500"
                         _hover={{
                             color: "#000",
                             backgroundColor: "#F8F4F0",

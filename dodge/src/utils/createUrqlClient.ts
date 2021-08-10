@@ -85,30 +85,13 @@ export const createUrqlClient = (ssrExchange: any) => {
                             );
                         },
                         createPost: (_result, args, cache, info) => {
-                            const allFields = cache.inspectFields("Query");
-                            const fieldInfos = allFields.filter(
-                                (info) => info.fieldName === "getPosts"
-                            );
-                            fieldInfos.forEach((fi) => {
-                                cache.invalidate(
-                                    "Query",
-                                    "getPosts",
-                                    fi.arguments || {}
-                                );
-                            });
+                            cache.invalidate("Query", "getPosts");
                         },
                         createGroup: (_result, args, cache, info) => {
-                            const allFields = cache.inspectFields("Query");
-                            const fieldInfos = allFields.filter(
-                                (info) => info.fieldName === "getGroups"
-                            );
-                            fieldInfos.forEach((fi) => {
-                                cache.invalidate(
-                                    "Query",
-                                    "getGroups",
-                                    fi.arguments || {}
-                                );
-                            });
+                            cache.invalidate("Query", "getGroups");
+                        },
+                        deletePost: (_result, args, cache, info) => {
+                            cache.invalidate("Query", "getPosts");
                         },
                     },
                 },
