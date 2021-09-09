@@ -30,7 +30,7 @@ const main = async () => {
     conn.runMigrations();
     const app = express();
     // connect redis to our session
-    // to store session variables in redis cache 
+    // to store session variables in redis cache
     const RedisStore = connectRedis(session);
     // initialise a new redis cache
     const redis = new Redis(process.env.REDIS_URL);
@@ -54,7 +54,7 @@ const main = async () => {
                 maxAge: 1000 * 60 * 60 * 24 * 365 * 10, // 10 years
                 httpOnly: true,
                 sameSite: "lax",
-                secure: false, // cookie only works in https (turn this off if not using https in production)
+                secure: true, // cookie only works in https (turn this off if not using https in production)
                 domain: __prod__ ? ".japrozsaini.me" : undefined,
             },
             saveUninitialized: false,
