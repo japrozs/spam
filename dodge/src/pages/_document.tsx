@@ -54,6 +54,7 @@ export default class Document extends NextDocument {
                         href="/safari-pinned-tab.svg"
                         color="#5bbad5"
                     />
+                        <link rel="stylesheet" href="https://rsms.me/inter/inter.css"/>
                     <meta name="theme-color" content="#ffffff" />
                     <Meta title="Spam • Publish your thoughts to other peoples inbox" />
                 </Head>
