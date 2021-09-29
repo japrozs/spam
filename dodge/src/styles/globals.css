@@ -23,6 +23,12 @@ a {
     width: 0;
 }
 
+.truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -92,6 +98,11 @@ a {
     }
     .middle_list .mid_card {
         margin-right: 30px !important;
+        align-self: center;
+    }
+    .search-input {
+        width: 69% !important;
+        min-width: 583px !important;
     }
 }
 

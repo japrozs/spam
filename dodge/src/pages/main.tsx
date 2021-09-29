@@ -31,7 +31,7 @@ const Main: React.FC<mainProps> = ({}) => {
             </Head>
             <Navbar />
             <Flex justifyContent="center" justifyItems="center">
-                <Box className="group_list" mr={"3vw"}>
+                <Box className="group_list" mr={["0px", "", "3vw"]}>
                     <GroupList />
                 </Box>
                 <MiddleSection />

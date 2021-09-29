@@ -53,7 +53,8 @@ export const Card: React.FC<CardProps> = ({
         <Box
             borderRadius="0.2rem"
             border="1px solid #ADACAC"
-            maxW={"600px"}
+            maxW={"583px"}
+            minW={["100vw", "72%", "580px"]}
             mr={5}
             mb={5}
             width={"100%"}
@@ -85,11 +86,12 @@ export const Card: React.FC<CardProps> = ({
                             fontFamily="Lora"
                             fontWeight="semibold"
                             fontSize="35px"
+                            className={"truncate"}
                             onClick={() => {
                                 router.push(`/p/${id}`);
                             }}
                         >
-                            {truncate(subject, 13)}
+                            {subject}
                         </Text>
                     )}
                     <Text color="#909090" px={3} fontSize="3xl">

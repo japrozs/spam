@@ -12,7 +12,12 @@ export const MiddleSection: React.FC<MainLayoutProps> = ({}) => {
     const [{ data, fetching }] = useGetPostsQuery();
     const [searchQuery, setSearchQuery] = useState("");
     return (
-        <Box className="middle_list" margin={0} padding={0}>
+        <Box
+            className="middle_list"
+            margin={0}
+            padding={0}
+            minW={["95vw", "72%", "600px"]}
+        >
             <Text mb={3} fontWeight="semibold" fontSize="4xl">
                 😃 Your Newsletters
             </Text>
@@ -23,6 +28,7 @@ export const MiddleSection: React.FC<MainLayoutProps> = ({}) => {
                 mb={3}
                 mt={2}
                 width={"97%"}
+                className="search-input"
                 placeholder="Find a post"
             />
             {data &&
