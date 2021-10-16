@@ -31,7 +31,7 @@
     "dependencies": {
         "@types/connect-redis": "^0.0.17",
         "@types/express-session": "^1.17.4",
-        "@types/ioredis": "^4.26.6",
+        "@types/ioredis": "^4.26.7",
         "connect-redis": "^6.0.0",
         "dotenv-safe": "^8.2.0",
         "express-session": "^1.17.2",
