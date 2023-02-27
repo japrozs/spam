@@ -1,9 +1,5 @@
 # Spam - a new way to publish your thoughts to other people inboxes
 
-# Pass
-
-Pass is an app that helps you find something to do when you're feeling bored. Just create an account, find an event and join millions of other people like you.
-
 # Folder structure
 
 | Folder             | Description                                     |
