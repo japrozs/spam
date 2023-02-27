@@ -1,4 +1,5 @@
-# Spam - a new way to publish your thoughts to other people inboxes
+# Spam
+Spam is a new way to publish your thoughts to other people inboxes
 
 # Folder structure
 
