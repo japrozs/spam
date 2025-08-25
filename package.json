@@ -6,7 +6,7 @@
     "lerna": "^4.0.0"
   },
   "dependencies": {
-    "apollo-server-core": "^3.11.0",
+    "apollo-server-core": "^3.13.0",
     "cheerio": "^1.0.0-rc.10",
     "juice": "^8.0.0",
     "morgan": "^1.10.0",
